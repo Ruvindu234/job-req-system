@@ -45,7 +45,7 @@ const TestimonialsCard2 = ({ testimonial }) => {
 					</div>
 					<div className="shape-image">
 						<Image
-							src="/images/shapes/divider.png"
+							src="/new_images/divider.webp"
 							alt=""
 							width={630}
 							height={127}

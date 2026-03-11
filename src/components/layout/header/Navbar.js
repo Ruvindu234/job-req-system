@@ -130,7 +130,7 @@ const Navbar = ({ headerType, isStickyHeader }) => {
 										<div
 											className="tj-sidebar-cta"
 											style={{
-												backgroundImage: "url('/images/blog/widget-cta.webp')",
+												backgroundImage: "url('/new_images/widget-cta.webp')",
 											}}
 										>
 											<div className="content">

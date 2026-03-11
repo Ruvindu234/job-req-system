@@ -7,7 +7,7 @@ const Progress1 = () => {
 			<div
 				className="progress-bg-images d-none d-lg-block"
 				style={{
-					backgroundImage: "url('/images/progress/h2-progress-2.webp')",
+					backgroundImage: "url('/new_images/h2-progress-2.webp')",
 				}}
 			></div>
 			<div className="container">

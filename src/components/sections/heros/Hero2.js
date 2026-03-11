@@ -12,17 +12,17 @@ const Hero2 = () => {
 		{
 			subtitle: "number #1 solver agency",
 			title: "Transform your business with expert consultation",
-			img: "/images/slider/slider-1.webp",
+			img: "/new_images/slider-1.webp",
 		},
 		{
 			subtitle: "number #1 solver agency",
 			title: "Transform your business with expert consultation",
-			img: "/images/slider/slider-2.webp",
+			img: "/new_images/slider-2.webp",
 		},
 		{
 			subtitle: "number #1 solver agency",
 			title: "Transform your business with expert consultation",
-			img: "/images/slider/slider-3.webp",
+			img: "/new_images/slider-3.webp",
 		},
 	];
 

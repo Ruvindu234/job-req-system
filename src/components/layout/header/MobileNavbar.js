@@ -139,7 +139,7 @@ const MobileNavbar = () => {
 													className="tj-sidebar-cta"
 													style={{
 														backgroundImage:
-															"url('/images/blog/widget-cta.webp')",
+															"url('/new_images/widget-cta.webp')",
 													}}
 												>
 													<div className="content">

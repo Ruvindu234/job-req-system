@@ -11,7 +11,7 @@ const About2 = () => {
 						<div className="about-wrapper">
 							<div className="about-images-group-one hover:shine wow fadeInUp">
 								<Image
-									src="/images/about/h2-about-1.webp"
+									src="/new_images/h2-about-1.webp"
 									alt="Images"
 									width={399}
 									height={532}

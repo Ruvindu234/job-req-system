@@ -39,7 +39,7 @@ const Testimonials2 = ({ type }) => {
 							data-wow-delay="0.3s"
 						>
 							<Image
-								src="/images/testimonial/h2-test-1.webp"
+								src="/new_images/h2-test-1.webp"
 								alt="Images"
 								width={550}
 								height={630}
