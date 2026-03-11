@@ -76,20 +76,7 @@ const Header = ({ headerType, isHeaderTop, topbarType, isStickyHeader }) => {
 										}`}
 									>
 										{/* <!-- contact --> */}
-										{headerType === 2 || headerType === 9 ? (
-											<ButtonHeaderContact type={headerType === 9 ? 2 : 0} />
-										) : (
-											""
-										)}
 										{/* <!-- search btn --> */}
-										{headerType === 7 || headerType === 10 ? (
-											""
-										) : (
-											<ButtonSearch
-												headerType={headerType}
-												handleSearchToggler={handleSearchToggler}
-											/>
-										)}
 										{/* <!-- button --> */}
 										{headerType === 2 ||
 										headerType === 3 ||
@@ -124,16 +111,6 @@ const Header = ({ headerType, isHeaderTop, topbarType, isStickyHeader }) => {
 										) : (
 											""
 										)}{" "}
-										{headerType === 7 ||
-										headerType === 7 ||
-										headerType === 10 ? (
-											<ButtonSearch
-												headerType={headerType}
-												handleSearchToggler={handleSearchToggler}
-											/>
-										) : (
-											""
-										)}
 										{headerType === 7 || headerType === 10 ? (
 											<ButtonMenuToggler
 												headerType={headerType}
