@@ -5,7 +5,7 @@ const FormSelect = ({ id, name, className, defaultValue, items }) => {
 	useEffect(() => {
 		let instance;
 
-		import("../../../libs/nice-select2").then(({ default: NiceSelect }) => {
+		import("nice-select2").then(({ default: NiceSelect }) => {
 			const el = document.getElementById(id || "niceselect");
 
 			// 🧹 Clean up any previously injected markup before initializing
