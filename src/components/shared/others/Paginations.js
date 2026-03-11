@@ -33,7 +33,7 @@ const Paginations = ({ paginationDetails, type }) => {
 							handleCurrentPage(e, currentpage < 1 ? 0 : currentpage - 1)
 						}
 					>
-						<i className="tji-arrow-left"></i>
+						<i className="fas fa-arrow-left"></i>
 					</Link>
 				</li>
 				{currentPaginationItems?.map((item, idx) => (
@@ -68,7 +68,7 @@ const Paginations = ({ paginationDetails, type }) => {
 							)
 						}
 					>
-						<i className="tji-arrow-right"></i>
+						<i className="fas fa-arrow-right"></i>
 					</Link>
 				</li>
 			</ul>

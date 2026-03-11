@@ -11,8 +11,8 @@ const ButtonPrimary = ({ className, text, url, type, iconName }) => {
 					<span className="btn_inner">
 						<span className="btn_icon">
 							<span>
-								<i className="tji-arrow-right"></i>
-								<i className="tji-arrow-right"></i>
+								<i className="fas fa-arrow-right"></i>
+								<i className="fas fa-arrow-right"></i>
 							</span>
 						</span>
 						<span className="btn_text">
@@ -28,8 +28,8 @@ const ButtonPrimary = ({ className, text, url, type, iconName }) => {
 					<span className="btn_inner">
 						<span className="btn_icon">
 							<span>
-								<i className={iconName ? iconName : "tji-arrow-right"}></i>
-								<i className={iconName ? iconName : "tji-arrow-right"}></i>
+								<i className={iconName ? iconName : "fas fa-arrow-right"}></i>
+								<i className={iconName ? iconName : "fas fa-arrow-right"}></i>
 							</span>
 						</span>
 						<span className="btn_text">

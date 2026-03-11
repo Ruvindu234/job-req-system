@@ -61,7 +61,7 @@ const BlogCard2 = ({ blog, type, isSidebar, idx }) => {
 				</div>
 				<div className="blog-button">
 					<Link className="blog-btn text-btn" href={`/blogs/${id}`}>
-						Read more <i className="tji-arrow-right"></i>
+						Read more <i className="fas fa-arrow-right"></i>
 					</Link>
 				</div>
 			</div>

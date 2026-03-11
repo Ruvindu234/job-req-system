@@ -90,10 +90,10 @@ const Testimonials2 = ({ type }) => {
 								: ""}
 							<div className="swiper_navigations testimonial-navigation">
 								<div className="navigation slider-prev">
-									<i className="tji-arrow-left"></i>
+									<i className="fas fa-arrow-left"></i>
 								</div>
 								<div className="navigation slider-next">
-									<i className="tji-arrow-right"></i>
+									<i className="fas fa-arrow-right"></i>
 								</div>
 							</div>
 						</Swiper>

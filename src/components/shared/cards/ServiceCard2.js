@@ -22,7 +22,7 @@ const ServiceCard2 = ({ service, idx, lastItem }) => {
 					</p>
 				</div>
 				<Link className="service-button text-btn" href={`/services/${id}`}>
-					Get optimization <i className="tji-arrow-right"></i>
+					Get optimization <i className="fas fa-arrow-right"></i>
 				</Link>
 			</div>
 			<div className="thumb">
