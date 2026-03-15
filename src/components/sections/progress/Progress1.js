@@ -15,7 +15,7 @@ const Progress1 = () => {
 					<div className="col-lg-6 order-2 order-lg-1">
 						<div className="progress-images">
 							<Image
-								src="/images/progress/h2-progress-1.webp"
+								src="/new_images/h2-progress-1.jpeg"
 								alt="Images"
 								width={600}
 								height={589}
