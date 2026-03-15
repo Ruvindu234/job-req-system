@@ -3,28 +3,28 @@
 		"id": 1,
 		"name": "Savanah Nguyen",
 		"desig": "Manager",
-		"img": "/images/team/team-1.webp",
+		"img": "/new_images/team-member-1.jpeg",
 		"imgLarge": "/images/team/team-single.webp"
 	},
 	{
 		"id": 2,
 		"name": "Esther Howard",
 		"desig": "Co. Founder",
-		"img": "/images/team/team-2.webp",
+		"img": "/new_images/team-member-2.webp",
 		"imgLarge": "/images/team/team-single.webp"
 	},
 	{
 		"id": 3,
 		"name": "Kristin Watson",
 		"desig": "Sr. Manager",
-		"img": "/images/team/team-3.webp",
+		"img": "/new_images/team-member-3.webp",
 		"imgLarge": "/images/team/team-single.webp"
 	},
 	{
 		"id": 4,
 		"name": "Guy Hawkins",
 		"desig": "Sr. Marketer",
-		"img": "/images/team/team-4.webp",
+		"img": "/new_images/team-member-4.webp",
 		"imgLarge": "/images/team/team-single.webp"
 	},
 	{
@@ -88,14 +88,14 @@
 		"id": 13,
 		"name": "Savanah Nguyen",
 		"desig": "Manager",
-		"img": "/images/team/team-1.webp",
+		"img": "/new_images/team-member-1.jpeg",
 		"imgLarge": "/images/team/team-single.webp"
 	},
 	{
 		"id": 14,
 		"name": "Esther Howard",
 		"desig": "Co. Founder",
-		"img": "/images/team/team-2.webp",
+		"img": "/new_images/team-member-2.webp",
 		"imgLarge": "/images/team/team-single.webp"
 	}
 ]
