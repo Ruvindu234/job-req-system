@@ -10,8 +10,8 @@ const Footer2 = () => {
 						<div className="col-xl-4 col-lg-4 col-md-6 col-sm-6">
 							<div className="footer-widget footer2-col-1 footer-info">
 								<div className="footer-logo">
-									<Link href="/">
-										<img src="/images/logos/primary-logo.png" alt="solvior" />
+									<Link href="/" style={{ fontSize: "22px", fontWeight: "700", letterSpacing: "0.5px" }}>
+										TalentBridge
 									</Link>
 								</div>
 								<p className="desc">
@@ -142,7 +142,7 @@ const Footer2 = () => {
 											© 2025{" "}
 											<Link href="/" target="_blank">
 												{" "}
-												Solvior{" "}
+												TalentBridge{" "}
 											</Link>{" "}
 											All right reserved.
 										</p>
