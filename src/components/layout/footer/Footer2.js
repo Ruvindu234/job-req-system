@@ -1,5 +1,6 @@
 import BackToTop from "@/components/shared/others/BackToTop";
 import Link from "next/link";
+import FooterLogo from "./FooterLogo";
 
 const Footer2 = () => {
 	return (
@@ -10,9 +11,7 @@ const Footer2 = () => {
 						<div className="col-xl-4 col-lg-4 col-md-6 col-sm-6">
 							<div className="footer-widget footer2-col-1 footer-info">
 								<div className="footer-logo">
-									<Link href="/" style={{ fontSize: "22px", fontWeight: "700", letterSpacing: "0.5px" }}>
-										TalentBridge
-									</Link>
+									<FooterLogo />
 								</div>
 								<p className="desc">
 									Our mission is to empowers businesses off our all size too
