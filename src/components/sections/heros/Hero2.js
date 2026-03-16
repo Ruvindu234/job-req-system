@@ -12,11 +12,6 @@ const Hero2 = () => {
 		{
 			subtitle: "number #1 solver agency",
 			title: "Transform your business with expert consultation",
-			img: "/new_images/slider-1.webp",
-		},
-		{
-			subtitle: "number #1 solver agency",
-			title: "Transform your business with expert consultation",
 			img: "/new_images/slider-2.webp",
 		},
 		{
@@ -31,8 +26,7 @@ const Hero2 = () => {
 
 		if (dashInner) {
 			const realIndex = swiper.realIndex;
-			const totalSlides = swiper.slides.length;
-			const progressPercent = ((realIndex + 1) / totalSlides) * 100;
+			const progressPercent = ((realIndex + 1) / heroSlides.length) * 100;
 			dashInner.style.width = progressPercent + "%";
 		}
 	}
@@ -113,11 +107,11 @@ const Hero2 = () => {
 
 				<div className="tj-navigation">
 					<div className="tj-btn tj-btn-prev">
-						<i className="tji-angle-left"></i>
+						<i className="fas fa-caret-left"></i>
 					</div>
 					<div className="tj-sw-pagination"></div>
 					<div className="tj-btn tj-btn-next">
-						<i className="tji-angle-right"></i>
+						<i className="fas fa-caret-right"></i>
 					</div>
 				</div>
 			</Swiper>
