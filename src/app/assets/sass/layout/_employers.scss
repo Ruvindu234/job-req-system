@@ -1,0 +1,250 @@
+@use "../utilities" as *;
+
+/* START: Employers Page CSS */
+
+// ── Visa Cards ──────────────────────────────────────────────
+.employer-visa-cards {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+	width: 100%;
+	margin-top: 40px;
+	margin-bottom: 40px;
+
+	@media #{$md, $sm, $xs} {
+		justify-content: center;
+	}
+}
+
+.employer-visa-card {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	padding: 18px 24px;
+	background-color: var(--tj-color-common-white);
+	border: 1px solid var(--tj-color-border-2);
+	border-radius: 4px;
+	flex: 1;
+	min-width: 150px;
+	@include transition(all 0.3s ease-in-out 0s);
+
+	.visa-icon {
+		width: 48px;
+		height: 48px;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		background-color: var(--tj-color-theme-bg-2);
+		border-radius: 50%;
+		flex-shrink: 0;
+		@include transition(all 0.3s ease-in-out 0s);
+
+		i {
+			font-size: 20px;
+			color: var(--tj-color-theme-primary);
+			@include transition(all 0.3s ease-in-out 0s);
+		}
+	}
+
+	.visa-info {
+		h5 {
+			margin: 0 0 2px;
+			font-size: 16px;
+			line-height: 1.2;
+			@include transition(all 0.3s ease-in-out 0s);
+		}
+
+		span {
+			font-size: 13px;
+			color: var(--tj-color-common-black-2);
+			@include transition(all 0.3s ease-in-out 0s);
+		}
+	}
+
+	&:hover {
+		background-color: var(--tj-color-theme-dark);
+		border-color: var(--tj-color-theme-dark);
+
+		.visa-icon {
+			background-color: var(--tj-color-theme-primary);
+
+			i {
+				color: var(--tj-color-common-white);
+			}
+		}
+
+		.visa-info {
+			h5 {
+				color: var(--tj-color-common-white);
+			}
+
+			span {
+				color: var(--tj-color-common-white-2);
+			}
+		}
+	}
+
+	@media #{$sm, $xs} {
+		min-width: calc(50% - 8px);
+	}
+}
+
+// ── Quote Block ─────────────────────────────────────────────
+.employer-quote {
+	position: relative;
+	background-color: var(--tj-color-theme-bg-2);
+	border-left: 4px solid var(--tj-color-theme-primary);
+	padding: 30px 40px 30px 64px;
+	border-radius: 4px;
+
+	p {
+		margin: 0;
+		font-style: italic;
+		font-size: 18px;
+		color: var(--tj-color-text-body);
+		line-height: 1.7;
+	}
+
+	.employer-quote-icon {
+		position: absolute;
+		top: 22px;
+		left: 22px;
+		font-size: 24px;
+		color: var(--tj-color-theme-primary);
+		opacity: 0.5;
+	}
+
+	@media #{$md, $sm, $xs} {
+		padding: 25px 25px 25px 54px;
+
+		p {
+			font-size: 16px;
+		}
+	}
+}
+
+// ── Local Section ────────────────────────────────────────────
+.employer-local-section {
+	background-color: var(--tj-color-common-white);
+
+	&::before {
+		display: none;
+	}
+}
+
+// ── Challenges List ──────────────────────────────────────────
+.employer-challenges {
+	margin-top: 10px;
+	margin-bottom: 10px;
+
+	.employer-challenges-title {
+		font-size: 18px;
+		margin-bottom: 18px;
+		color: var(--tj-color-heading-primary);
+	}
+}
+
+.employer-challenge-list {
+	list-style: none;
+	margin: 0 0 24px;
+	padding: 0;
+
+	li {
+		display: flex;
+		align-items: flex-start;
+		gap: 12px;
+		padding: 12px 16px;
+		background-color: var(--tj-color-theme-bg-2);
+		border-left: 3px solid transparent;
+		margin-bottom: 10px;
+		font-size: 15px;
+		color: var(--tj-color-text-body);
+		@include transition(all 0.3s ease-in-out 0s);
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+		&:hover {
+			border-left-color: var(--tj-color-theme-primary);
+			background-color: var(--tj-color-theme-bg);
+		}
+
+		.challenge-icon {
+			flex-shrink: 0;
+			margin-top: 2px;
+
+			i {
+				font-size: 18px;
+				color: var(--tj-color-theme-primary);
+			}
+		}
+	}
+}
+
+.employer-solution-text {
+	font-size: 16px;
+	font-weight: var(--tj-fw-sbold);
+	color: var(--tj-color-heading-primary);
+	font-family: var(--tj-ff-heading);
+	margin: 0;
+}
+
+// ── Local Quote ──────────────────────────────────────────────
+.employer-local-quote {
+	position: relative;
+	padding: 24px 30px 24px 52px;
+	background-color: var(--tj-color-theme-dark);
+	margin-top: 0;
+
+	i {
+		position: absolute;
+		top: 18px;
+		left: 20px;
+		font-size: 20px;
+		color: var(--tj-color-theme-primary);
+		opacity: 0.7;
+	}
+
+	p {
+		margin: 0;
+		font-style: italic;
+		color: var(--tj-color-common-white-2);
+		font-size: 15px;
+		line-height: 1.6;
+	}
+}
+
+// ── Contact Info inside enquiry section ──────────────────────
+.employer-contact-info {
+	margin-top: 30px;
+	margin-bottom: 30px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+
+	.contact-text {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		color: var(--tj-color-common-white-2);
+		font-size: 15px;
+
+		i {
+			width: 20px;
+			color: var(--tj-color-theme-primary);
+			font-size: 16px;
+		}
+
+		a {
+			color: var(--tj-color-common-white-2);
+			@include transition(all 0.3s ease-in-out 0s);
+
+			&:hover {
+				color: var(--tj-color-theme-primary);
+			}
+		}
+	}
+}
+
+/* !END: Employers Page CSS */

@@ -28,7 +28,8 @@
       "Bash(ls \"E:\\\\Job-req\\\\job-req-system\\\\src\\\\app\\\\\\(pages\\)\")",
       "WebFetch(domain:localhost)",
       "Bash(curl:*)",
-      "WebFetch(domain:www.auz-connect.com.au)"
+      "WebFetch(domain:www.auz-connect.com.au)",
+      "Bash(node -e \":*)"
     ]
   }
 }
