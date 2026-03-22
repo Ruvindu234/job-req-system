@@ -466,6 +466,11 @@ export default function ThreeDScene() {
 				const centre = box.getCenter(new THREE.Vector3());
 				model.position.sub(centre.multiplyScalar((R * 2) / maxDim));
 
+				// ── Align the GLTF texture so Australia sits at the ll2v3
+				// computed position for Sydney. Adjust this angle until the
+				// continent on the model lines up with the landing marker.
+				model.rotation.y = Math.PI;
+
 				earthGroup.add(model);
 			},
 			undefined,
@@ -584,48 +589,32 @@ export default function ThreeDScene() {
 			scene.add(trailMesh);
 		}
 
-		// ── Flight path: LA → UAE → India → Indonesia → NE Australia → Sydney
-		// CatmullRomCurve3 with dense waypoints keeps the path above the surface.
-		const ALT = R + 1.2; // cruise altitude
-		const flightWaypoints = [
-			// ── Takeoff from Los Angeles ──────────────────────────────────
-			ll2v3( 34, -118, R + 0.01), // on the ground at LA
-			ll2v3( 35, -114, R + 0.25), // rotate & lift off
-			ll2v3( 36, -108, R + 0.60), // climbing
-			ll2v3( 38,  -96, R + 0.95), // still climbing
-			// ── Cruise ────────────────────────────────────────────────────
-			ll2v3( 42,  -70, ALT),      // Eastern USA
-			ll2v3( 45,  -50, ALT),      // W Atlantic
-			ll2v3( 44,  -30, ALT),      // Mid Atlantic
-			ll2v3( 40,  -10, ALT),      // near Portugal
-			ll2v3( 36,   10, ALT),      // Mediterranean
-			ll2v3( 30,   35, ALT),      // Middle East entry
-			ll2v3( 25,   55, ALT),      // UAE / Dubai
-			ll2v3( 19,   72, ALT),      // Mumbai / India W coast
-			ll2v3( 12,   80, ALT),      // SE India
-			ll2v3(  5,   95, ALT),      // Bay of Bengal
-			ll2v3( -5,  110, ALT),      // Sumatra / Indonesia
-			ll2v3(-10,  125, ALT),      // Java Sea
-			// ── Descent into Sydney ───────────────────────────────────────
-			ll2v3(-13,  136, R + 0.95), // start descent
-			ll2v3(-17,  143, R + 0.60), // approaching QLD coast
-			ll2v3(-24,  148, R + 0.30), // descending over NSW
-			ll2v3(-30,  151, R + 0.10), // final approach
-			sydPos.clone().normalize().multiplyScalar(R + 0.01), // touch down Sydney
-		];
-		const flightCurve = new THREE.CatmullRomCurve3(flightWaypoints, false, 'catmullrom', 0.5);
+		// ── Flight path: full loop around the Equator ─────────────────────
+		// Dense waypoints every ~20° of longitude at lat=0 (Equator),
+		// closed loop so the plane circles endlessly.
+		const ALT = R + 0.22; // cruise altitude — hugs the surface
+		const flightWaypoints = [];
+		const EQUATOR_STEPS = 36; // one point every 10°
+		for (let i = 0; i <= EQUATOR_STEPS; i++) {
+			const lon = -180 + (i / EQUATOR_STEPS) * 360;
+			flightWaypoints.push(ll2v3(0, lon, ALT));
+		}
+		const flightCurve = new THREE.CatmullRomCurve3(flightWaypoints, true, 'catmullrom', 0.5);
 
 		// Park plane at LA ground position during intro orbit
 		plane.position.copy(flightWaypoints[0]);
 
 		// ── Animation loop ─────────────────────────────────────────────────
 		const clock = new THREE.Clock();
-		// camTheta ≈ 0.2 faces the Americas/USA side of the globe
-		let phase = 0, phaseT = 0, camTheta = 0.2;
-		const CAM_D = 5.5;
+		// camTheta ≈ 0 faces the equator start (lon=-180)
+		let phase = 0, phaseT = 0, camTheta = 0;
+		const CAM_D      = 4.8; // intro orbit distance
+		const CAM_D_FLY  = 4.2; // flight distance — keeps full globe visible
+		let   camDist    = CAM_D; // current interpolated distance
+
 		let rafId;
 
-		const phaseStatus = ['EARTH','LOS ANGELES → DUBAI → INDIA → SYDNEY','APPROACHING SYDNEY...','WELCOME TO AUSTRALIA ✈'];
+		const phaseStatus = ['EARTH', 'EQUATOR ORBIT ✈'];
 
 		const FLIGHT_DURATION = 24; // seconds — long enough to feel cinematic
 		let   bankAngle       = 0;  // smoothed bank, persists across frames
@@ -646,12 +635,13 @@ export default function ThreeDScene() {
 			cloudMesh.rotation.y += dt * 0.018;
 
 			if (phase === 0) {
-				// Slow orbit while Earth is displayed
-				camTheta += dt * 0.15;
+				// Orbit while Earth is displayed — faster so India comes into view
+				camTheta += dt * 0.25;
+				camDist += (CAM_D - camDist) * dt * 2.0; // ease back to full distance
 				camera.position.set(
-					CAM_D * Math.sin(camTheta),
-					CAM_D * 0.35,
-					CAM_D * Math.cos(camTheta)
+					camDist * Math.sin(camTheta),
+					camDist * 0.35,
+					camDist * Math.cos(camTheta)
 				);
 				camera.lookAt(0, 0, 0);
 				if (phaseT > 2.5) {
@@ -660,16 +650,11 @@ export default function ThreeDScene() {
 				}
 
 			} else if (phase === 1) {
-				const prog = Math.min(phaseT / FLIGHT_DURATION, 1);
-
-				// Cubic ease-in-out: smooth acceleration off the runway,
-				// smooth deceleration into Sydney
-				const ease = prog < 0.5
-					? 4 * prog * prog * prog
-					: 1 - Math.pow(-2 * prog + 2, 3) / 2;
+				// Continuous loop — wraps around so the plane circles endlessly
+				const loopT = (phaseT % FLIGHT_DURATION) / FLIGHT_DURATION;
 
 				// ── Position ─────────────────────────────────────────────
-				const pos = flightCurve.getPoint(ease);
+				const pos = flightCurve.getPoint(loopT);
 				plane.position.copy(pos);
 
 				// ── Orientation ──────────────────────────────────────────
@@ -677,7 +662,7 @@ export default function ThreeDScene() {
 				// earthNorm = outward from Earth centre (defines "up" for the aircraft)
 				// right    = perpendicular to both, points to right wing
 				// up       = recomputed so it is exactly perpendicular to forward
-				flightCurve.getTangent(ease, _forward).normalize();
+				flightCurve.getTangent(loopT, _forward).normalize();
 
 				const earthNorm = pos.clone().normalize();
 
@@ -686,7 +671,7 @@ export default function ThreeDScene() {
 
 				// Banking — measure how much the path curves left/right
 				// by comparing the tangent a tiny step ahead
-				const ahead = Math.min(1, ease + 0.006);
+				const ahead = (loopT + 0.006) % 1;
 				flightCurve.getTangent(ahead, _nextFwd).normalize();
 
 				const turnRate   = _nextFwd.clone().sub(_forward).dot(_right);
@@ -708,51 +693,17 @@ export default function ThreeDScene() {
 				// ── Trail ────────────────────────────────────────────────
 				updateTrail(pos);
 
-				// ── Camera: full globe orbital view (matches screenshot) ─────
-				// Camera sits above the plane's region of the globe at a
-				// fixed distance so the entire Earth stays in frame.
-				// Mix the plane's outward direction with world-up so the
-				// view tilts slightly overhead rather than dead side-on.
-				const planeDir = earthNorm.clone(); // outward from Earth at plane
-				const worldUp  = new THREE.Vector3(0, 1, 0);
-				// 0.35 blend toward world-up → ~20° overhead angle
-				_camTgt.copy(
-					planeDir.lerp(worldUp, 0.35).normalize().multiplyScalar(CAM_D)
-				);
-				// Very slow lerp so globe glides, never jumps
-				camera.position.lerp(_camTgt, dt * 0.6);
-				camera.lookAt(0, 0, 0); // always center the Earth
+				// ── Camera ───────────────────────────────────────────────────
+				// Full-globe view: camera follows the plane from far enough
+				// back to see the whole Earth, slightly elevated for a 3/4 angle.
+				camDist += (CAM_D_FLY - camDist) * dt * 1.2;
 
-				if (prog >= 1) {
-					phase = 2; phaseT = 0;
-					setStatus(phaseStatus[2]);
-				}
-
-			} else if (phase === 2) {
-				if (phaseT > 0.8) {
-					markerG.visible = true;
-					opera.visible   = true;
-					plane.visible   = false;
-					if (trailMesh) { scene.remove(trailMesh); trailMesh = null; }
-					phase = 3; phaseT = 0;
-					setStatus(phaseStatus[3]);
-				}
-
-			} else if (phase === 3) {
-				earthGroup.rotation.y += dt * 0.04;
-				const pulse = (Math.sin(phaseT * 2.5) + 1) / 2;
-				ring2Mesh.scale.setScalar(1 + pulse * 0.6);
-				mkMat2.opacity = 0.4 - pulse * 0.35;
-				mkMat1.opacity = 0.7 + pulse * 0.3;
-				camTheta += dt * 0.12;
-				camera.position.lerp(
-					new THREE.Vector3(
-						CAM_D * 0.8 * Math.sin(camTheta),
-						CAM_D * 0.3,
-						CAM_D * 0.8 * Math.cos(camTheta)
-					), 0.015
-				);
+				_camTgt.copy(earthNorm)
+					.multiplyScalar(camDist)
+					.add(new THREE.Vector3(0, camDist * 0.35, 0));
+				camera.position.lerp(_camTgt, dt * 1.0);
 				camera.lookAt(0, 0, 0);
+
 			}
 
 			renderer.render(scene, camera);
