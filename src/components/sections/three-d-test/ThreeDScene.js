@@ -597,7 +597,7 @@ export default function ThreeDScene() {
 		const EQUATOR_STEPS = 36; // one point every 10°
 		for (let i = 0; i <= EQUATOR_STEPS; i++) {
 			const lon = -180 + (i / EQUATOR_STEPS) * 360;
-			flightWaypoints.push(ll2v3(0, lon, ALT));
+			flightWaypoints.push(ll2v3(25, lon, ALT));
 		}
 		const flightCurve = new THREE.CatmullRomCurve3(flightWaypoints, true, 'catmullrom', 0.5);
 
@@ -616,7 +616,7 @@ export default function ThreeDScene() {
 
 		const phaseStatus = ['EARTH', 'EQUATOR ORBIT ✈'];
 
-		const FLIGHT_DURATION = 24; // seconds — long enough to feel cinematic
+		const FLIGHT_DURATION = 60; // seconds — slow cinematic pace
 		let   bankAngle       = 0;  // smoothed bank, persists across frames
 		const _right   = new THREE.Vector3();
 		const _up      = new THREE.Vector3();
