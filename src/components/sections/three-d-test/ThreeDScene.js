@@ -469,7 +469,7 @@ export default function ThreeDScene() {
 				// ── Align the GLTF texture so Australia sits at the ll2v3
 				// computed position for Sydney. Adjust this angle until the
 				// continent on the model lines up with the landing marker.
-				model.rotation.y = Math.PI;
+				model.rotation.y = 0;
 
 				earthGroup.add(model);
 			},
@@ -501,7 +501,7 @@ export default function ThreeDScene() {
 			const phi=(90-lat)*Math.PI/180, theta=(lon+180)*Math.PI/180;
 			return new THREE.Vector3(-r*Math.sin(phi)*Math.cos(theta), r*Math.cos(phi), r*Math.sin(phi)*Math.sin(theta));
 		};
-		const sydPos = ll2v3(-33.87, 151.21, R);
+		const sydPos = ll2v3(-25, 133, R);
 
 		// Pulsing ring marker
 		const markerG = new THREE.Group();
@@ -545,6 +545,13 @@ export default function ThreeDScene() {
 		const plane = new THREE.Group();
 		plane.visible = true;
 		scene.add(plane);
+
+		// Invisible hit sphere — makes click detection reliable on a small model
+		const hitSphere = new THREE.Mesh(
+			new THREE.SphereGeometry(0.25, 8, 8),
+			new THREE.MeshBasicMaterial({ visible: false })
+		);
+		plane.add(hitSphere);
 
 		gltfLoader.load(
 			'/cartoon_plane.glb',
@@ -604,6 +611,11 @@ export default function ThreeDScene() {
 		// Park plane at LA ground position during intro orbit
 		plane.position.copy(flightWaypoints[0]);
 
+		// Divert-to-Australia state
+		let divertCurve = null;
+		let divertT     = 0;
+		const DIVERT_DURATION = 22; // seconds to reach Australia
+
 		// ── Animation loop ─────────────────────────────────────────────────
 		const clock = new THREE.Clock();
 		// camTheta ≈ 0 faces the equator start (lon=-180)
@@ -614,7 +626,64 @@ export default function ThreeDScene() {
 
 		let rafId;
 
-		const phaseStatus = ['EARTH', 'EQUATOR ORBIT ✈'];
+		const phaseStatus = ['EARTH', 'EQUATOR ORBIT ✈', 'DIVERTING TO AUSTRALIA ✈', 'AUSTRALIA ✈'];
+
+		// ── Click-to-divert ─────────────────────────────────────────────────
+		const raycaster = new THREE.Raycaster();
+		const _mouse    = new THREE.Vector2();
+
+		function buildDivertPath() {
+			// Derive current lat/lon from the plane's actual 3D position
+			const cur    = plane.position.clone().normalize();
+			const curLat = Math.asin(cur.y) * 180 / Math.PI;
+			const curLon = Math.atan2(cur.z, -cur.x) * 180 / Math.PI - 180;
+			const currentLon = ((curLon % 360) + 360) % 360 - 180;
+
+			const targetLat = -25, targetLon = 133;
+			let lonDiff = targetLon - currentLon;
+			if (lonDiff >  180) lonDiff -= 360;
+			if (lonDiff < -180) lonDiff += 360;
+
+			// Dense waypoints placed ON the sphere surface (radius ALT) with an
+			// altitude arc in the middle so the CatmullRom chord never dips below R.
+			const pts   = [];
+			const STEPS = 40;
+			for (let i = 0; i <= STEPS; i++) {
+				const t      = i / STEPS;
+				const lat    = curLat + (targetLat - curLat) * t;
+				const lon    = currentLon + lonDiff * t;
+				// Parabolic altitude arc: rises 0.4 units at mid-path, lands at R+0.02
+				const arc    = 0.4 * Math.sin(t * Math.PI);
+				const alt    = ALT + arc - t * (ALT - (R + 0.02));
+				pts.push(ll2v3(lat, lon, Math.max(alt, R + 0.02)));
+			}
+			return new THREE.CatmullRomCurve3(pts, false, 'catmullrom', 0.5);
+		}
+
+		const onPlaneClick = (e) => {
+			if (phase !== 1) return;
+			const rect = mount.getBoundingClientRect();
+			_mouse.x =  ((e.clientX - rect.left) / rect.width)  * 2 - 1;
+			_mouse.y = -((e.clientY - rect.top)  / rect.height) * 2 + 1;
+			raycaster.setFromCamera(_mouse, camera);
+			if (raycaster.intersectObject(hitSphere, true).length > 0) {
+				divertCurve = buildDivertPath();
+				divertT = 0;
+				phase = 2; phaseT = 0;
+				setStatus(phaseStatus[2]);
+			}
+		};
+		mount.addEventListener('click', onPlaneClick);
+
+		const onMouseMove = (e) => {
+			if (phase !== 1) { mount.style.cursor = 'default'; return; }
+			const rect = mount.getBoundingClientRect();
+			_mouse.x =  ((e.clientX - rect.left) / rect.width)  * 2 - 1;
+			_mouse.y = -((e.clientY - rect.top)  / rect.height) * 2 + 1;
+			raycaster.setFromCamera(_mouse, camera);
+			mount.style.cursor = raycaster.intersectObject(hitSphere, true).length > 0 ? 'pointer' : 'default';
+		};
+		mount.addEventListener('mousemove', onMouseMove);
 
 		const FLIGHT_DURATION = 60; // seconds — slow cinematic pace
 		let   bankAngle       = 0;  // smoothed bank, persists across frames
@@ -704,6 +773,69 @@ export default function ThreeDScene() {
 				camera.position.lerp(_camTgt, dt * 1.0);
 				camera.lookAt(0, 0, 0);
 
+			} else if (phase === 2) {
+				// Fly divert curve toward Australia
+				divertT = Math.min(phaseT / DIVERT_DURATION, 1);
+				const pos = divertCurve.getPoint(divertT);
+				// Safety clamp — spline chords must never dip below the surface
+				if (pos.length() < R + 0.02) pos.normalize().multiplyScalar(R + 0.02);
+				plane.position.copy(pos);
+
+				// Orientation — clamped away from t=1 edge
+				const safeT  = Math.min(divertT, 0.999);
+				const safeT2 = Math.min(divertT + 0.006, 0.999);
+				divertCurve.getTangent(safeT, _forward).normalize();
+				const earthNorm2 = pos.clone().normalize();
+				_right.crossVectors(earthNorm2, _forward).normalize();
+				_up.crossVectors(_forward, _right).normalize();
+
+				divertCurve.getTangent(safeT2, _nextFwd).normalize();
+				const turnRate2   = _nextFwd.clone().sub(_forward).dot(_right);
+				const targetBank2 = THREE.MathUtils.clamp(turnRate2 * 22, -0.6, 0.6);
+				bankAngle += (targetBank2 - bankAngle) * (dt * 3.5);
+
+				_rotMat.makeBasis(_forward, _up, _right.clone().negate());
+				_tQuat.setFromRotationMatrix(_rotMat);
+				_bankQ.setFromAxisAngle(_forward, bankAngle);
+				_tQuat.premultiply(_bankQ);
+				plane.quaternion.slerp(_tQuat, dt * 4.5);
+
+				updateTrail(pos);
+
+				camDist += (CAM_D_FLY - camDist) * dt * 1.2;
+				_camTgt.copy(earthNorm2)
+					.multiplyScalar(camDist)
+					.add(new THREE.Vector3(0, camDist * 0.35, 0));
+				camera.position.lerp(_camTgt, dt * 1.0);
+				camera.lookAt(0, 0, 0);
+
+				if (divertT >= 1) {
+					phase = 3; phaseT = 0;
+					setStatus(phaseStatus[3]);
+					markerG.visible = true;
+					opera.visible = true;
+				}
+
+			} else if (phase === 3) {
+				// Landed — shrink plane to zero over 1.5 s, then reset to equatorial loop
+				const SHRINK_DURATION = 1.5;
+				const shrinkT = Math.min(phaseT / SHRINK_DURATION, 1);
+				plane.scale.setScalar(1 - shrinkT); // 1 → 0
+
+				if (shrinkT >= 1) {
+					// Reset everything for a fresh equatorial loop
+					plane.scale.setScalar(1);
+					plane.position.copy(flightWaypoints[0]);
+					markerG.visible = false;
+					opera.visible   = false;
+					ring2Mesh.scale.setScalar(1);
+					ring2Mesh.material.opacity = 0.4;
+					divertCurve = null;
+					divertT     = 0;
+					bankAngle   = 0;
+					phase = 1; phaseT = 0;
+					setStatus(phaseStatus[1]);
+				}
 			}
 
 			renderer.render(scene, camera);
@@ -723,6 +855,8 @@ export default function ThreeDScene() {
 		return () => {
 			cancelAnimationFrame(rafId);
 			window.removeEventListener('resize', onResize);
+			mount.removeEventListener('click', onPlaneClick);
+			mount.removeEventListener('mousemove', onMouseMove);
 			renderer.dispose();
 			if (mount.contains(renderer.domElement)) mount.removeChild(renderer.domElement);
 		};
