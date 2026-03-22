@@ -29,7 +29,8 @@
       "WebFetch(domain:localhost)",
       "Bash(curl:*)",
       "WebFetch(domain:www.auz-connect.com.au)",
-      "Bash(node -e \":*)"
+      "Bash(node -e \":*)",
+      "Bash(npx next:*)"
     ]
   }
 }

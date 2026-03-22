@@ -15,6 +15,8 @@ const EmployerEnquiry = () => {
 				<div className="row">
 					<div className="col-12">
 						<div className="contact-wrapper">
+
+							{/* ── Left: Info ── */}
 							<div className="contact-left-content">
 								<div className="sec-heading style-2">
 									<span
@@ -31,11 +33,13 @@ const EmployerEnquiry = () => {
 										data-wow-delay="0.3s"
 									>
 										<p>
-											Whether you need overseas or local talent, our team is
-											ready to assist. Fill in the form and we&rsquo;ll be in
-											touch shortly.
+											Whether you need overseas or local talent, our team
+											is ready to assist. Fill in the form and we&rsquo;ll
+											be in touch shortly.
 										</p>
 									</div>
+
+									{/* ── Contact Info ── */}
 									<div
 										className="employer-contact-info wow fadeInUp"
 										data-wow-delay="0.4s"
@@ -55,6 +59,7 @@ const EmployerEnquiry = () => {
 											Suite 7.01, 12 Century Circuit, Baulkham Hills, NSW 2153
 										</div>
 									</div>
+
 									<div
 										className="contact-button wow fadeInUp"
 										data-wow-delay="0.5s"
@@ -68,13 +73,13 @@ const EmployerEnquiry = () => {
 								</div>
 							</div>
 
+							{/* ── Right: Form ── */}
 							<div
 								className="contact-form-one wow fadeInUp"
 								data-wow-delay="0.1s"
 							>
-								<h3 className="title">
-									Feel free to get in touch with us.
-								</h3>
+								<h3 className="title">Feel free to get in touch with us.</h3>
+
 								<form>
 									<div className="row">
 										<div className="col-sm-6">
@@ -187,6 +192,7 @@ const EmployerEnquiry = () => {
 									</div>
 								</form>
 							</div>
+
 						</div>
 					</div>
 				</div>

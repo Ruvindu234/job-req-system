@@ -9,28 +9,27 @@ const EmployersPageHeader = () => {
 			<div className="container">
 				<div className="row">
 					<div className="col-12 text-center">
+						<span
+							className="employer-page-badge wow fadeInDown"
+							data-wow-delay="0.1s"
+						>
+							// Recruitment &amp; Migration Solutions
+						</span>
 						<h1
 							className="tj-page-title wow fadeInDown"
-							data-wow-delay="0.1s"
+							data-wow-delay="0.2s"
 						>
 							Employers
 						</h1>
 						<p
-							className="wow fadeInUp"
-							data-wow-delay="0.2s"
-							style={{
-								color: "var(--tj-color-common-white)",
-								fontSize: "20px",
-								marginTop: "12px",
-								fontStyle: "italic",
-								opacity: 0.85,
-							}}
+							className="employer-page-tagline wow fadeInUp"
+							data-wow-delay="0.3s"
 						>
 							&ldquo;If you need &lsquo;em, we&rsquo;ll find &lsquo;em&rdquo;
 						</p>
 						<div
 							className="tj-page-link wow fadeInUp"
-							data-wow-delay="0.3s"
+							data-wow-delay="0.4s"
 						>
 							<span>
 								<Link href="/">
