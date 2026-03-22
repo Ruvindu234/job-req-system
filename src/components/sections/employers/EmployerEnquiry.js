@@ -1,7 +1,6 @@
 "use client";
 
 import ButtonPrimary from "@/components/shared/buttons/ButtonPrimary";
-import FormSelect from "@/components/shared/Inputs/FormSelect";
 import Link from "next/link";
 
 const EmployerEnquiry = () => {
@@ -110,59 +109,6 @@ const EmployerEnquiry = () => {
 													placeholder="Contact Number*"
 													required
 												/>
-											</div>
-										</div>
-										<div className="col-sm-6">
-											<div className="form-input">
-												<div className="tj-nice-select-box">
-													<div className="tj-select">
-														<FormSelect
-															id={"contact-method"}
-															className="nice-select"
-															defaultValue={"Preferred Contact Method"}
-															items={[
-																{
-																	value: "1",
-																	name: "Preferred Contact Method",
-																},
-																{ value: "2", name: "Email" },
-																{ value: "3", name: "Phone" },
-															]}
-														/>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div className="col-sm-6">
-											<div className="form-input">
-												<div className="tj-nice-select-box">
-													<div className="tj-select">
-														<FormSelect
-															id={"contact-time"}
-															className="nice-select"
-															defaultValue={"Preferred Contact Time"}
-															items={[
-																{
-																	value: "1",
-																	name: "Preferred Contact Time",
-																},
-																{ value: "2", name: "Anytime" },
-																{
-																	value: "3",
-																	name: "08:00am \u2013 12:00pm",
-																},
-																{
-																	value: "4",
-																	name: "12:00pm \u2013 04:00pm",
-																},
-																{
-																	value: "5",
-																	name: "04:00pm \u2013 08:00pm",
-																},
-															]}
-														/>
-													</div>
-												</div>
 											</div>
 										</div>
 										<div className="col-sm-6">
