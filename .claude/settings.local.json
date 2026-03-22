@@ -32,7 +32,9 @@
       "Bash(node -e \":*)",
       "Bash(npx next:*)",
       "Bash(find /e/Job-req/job-req-system -type f -name *employer* -o -type d -name *employer*)",
-      "Bash(grep -r \"EmployersPageHeader\\\\|LocalRecruitment\\\\|OverseasRecruitment\\\\|EmployerEnquiry\" /e/Job-req/job-req-system/src --include=*.js --include=*.jsx)"
+      "Bash(grep -r \"EmployersPageHeader\\\\|LocalRecruitment\\\\|OverseasRecruitment\\\\|EmployerEnquiry\" /e/Job-req/job-req-system/src --include=*.js --include=*.jsx)",
+      "mcp__claude_ai_Three_js_3D_Viewer__learn_threejs",
+      "mcp__claude_ai_Three_js_3D_Viewer__show_threejs_scene"
     ]
   }
 }
