@@ -304,3 +304,12 @@ Custom cursor component that replaces the default browser cursor with a branded 
 | 10 | Blogs2 | 3 blog cards grid | — |
 | 11 | Cta1 | Bold CTA headline + decorative shapes | Lets talk now → /contact |
 | — | Footer2 | 4-col: Brand, Offices, Resources, Services + copyright | — |
+
+
+Here's your complete 3D cinematic website! Here's what's in it step by step:
+What it does (the experience):
+
+Intro (0–2.5s) — The camera slowly orbits a rotating Earth. You can see the hand-drawn world map texture with Australia in warm ochre, city glow dots, ice caps, and a cloud layer.
+Flight phase (~11s) — The Earth freezes, and a detailed airplane (fuselage, swept wings, winglets, engines with glow) flies in from far away along a cinematic cubic Bézier curve. A condensation trail follows behind it. The camera dynamically tracks the approach.
+Landing — The plane descends to Sydney's coordinates (33°51′S 151°12′E), where a pulsing golden ring marker and a simplified 3D Sydney Opera House (iconic white shells on a stepped platform) are placed on the globe surface.
+Post-landing — The Earth resumes rotating, the camera orbits the globe, and the status reads "Welcome to Australia"
