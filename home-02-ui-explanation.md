@@ -306,10 +306,66 @@ Custom cursor component that replaces the default browser cursor with a branded 
 | — | Footer2 | 4-col: Brand, Offices, Resources, Services + copyright | — |
 
 
-Here's your complete 3D cinematic website! Here's what's in it step by step:
-What it does (the experience):
+  🌍 Earth Realism
+                                                                                                                                                                                  1. Real texture maps — Load NASA's Blue Marble texture (free, public domain) for the diffuse map, a specular map (ocean shiny, land matte), and a night lights texture (city  
+  glow that appears on the dark side)
+  2. Normal/bump map — Add a height map so mountains and ocean trenches have surface relief under lighting
+  3. Ocean specular — Separate ocean mesh or specular mask so only water reflects sunlight (sun glint effect)
+  4. Animated clouds — Real cloud layer that slowly drifts using a time-based shader offset instead of static rotation
 
-Intro (0–2.5s) — The camera slowly orbits a rotating Earth. You can see the hand-drawn world map texture with Australia in warm ochre, city glow dots, ice caps, and a cloud layer.
-Flight phase (~11s) — The Earth freezes, and a detailed airplane (fuselage, swept wings, winglets, engines with glow) flies in from far away along a cinematic cubic Bézier curve. A condensation trail follows behind it. The camera dynamically tracks the approach.
-Landing — The plane descends to Sydney's coordinates (33°51′S 151°12′E), where a pulsing golden ring marker and a simplified 3D Sydney Opera House (iconic white shells on a stepped platform) are placed on the globe surface.
-Post-landing — The Earth resumes rotating, the camera orbits the globe, and the status reads "Welcome to Australia"
+  ---
+  ✈️ Plane & Flight
+
+  5. Load a real GLTF aircraft model — Replace the geometry-built plane with a proper .glb model (free ones on Sketchfab/NASA 3D) via GLTFLoader
+  6. Engine exhaust particles — THREE.Points particle system emitting from engines with fade + spread
+  7. Contrail that fades — Trail points that fade opacity over time instead of cutting off sharply
+  8. Bank/roll on turns — Rotate plane on its local X axis as it curves through waypoints (tilt into turns)
+  9. Realistic speed profile — Slow take-off, cruise, slow descent rather than uniform easing
+
+  ---
+  🎬 Camera & Cinematic
+
+  10. Named cinematic shots — Dedicated camera sequences: aerial pull-back from LA, orbit lock during cruise, nose-cam, dramatic low approach into Sydney
+  11. Depth of field — Post-processing BokehPass to blur distant/near objects
+  12. Lens flare — Lensflare on the sun direction
+  13. Camera shake — Subtle perlin-noise shake during turbulence zones
+
+  ---
+  💡 Lighting & Post-Processing
+
+  14. Bloom on city lights — UnrealBloomPass (already available in viewer) on night-side city glow dots
+  15. Volumetric atmosphere — Custom shader for Rayleigh scattering — blue rim glow fading to orange near terminator
+  16. Sun position drives lighting — Move DirectionalLight slowly to simulate time of day during the flight
+
+  ---
+  🏙️ Destination
+
+  17. Sydney skyline silhouette — Add low-poly CBD buildings around the Opera House
+  18. Animated landing approach lights — Flashing PAPI/runway lights on approach
+  19. Splash screen on arrival — Fade-in overlay card: "Sydney, Australia — 14,498 km · 20h 30m"
+
+  ---
+  ⚙️ Performance & Code Quality
+
+  20. DRACO-compressed GLTF — Smaller model files, faster load
+  21. LOD (Level of Detail) — Lower-poly Earth when far, high-poly on close approach
+  22. Web Worker for texture generation — Move canvas texture drawing off the main thread to avoid frame drops on load
+  23. Proper asset pipeline — Pre-bake textures as PNG files in /public, load with TextureLoader instead of generating at runtime
+
+  ---
+  🗺️ UI/UX
+
+  24. HUD overlay — Live altitude, speed, distance-to-destination counter updating during flight
+  25. Route line on globe — Dashed great-circle line drawn on the globe surface showing the full path ahead
+  26. Click-to-explore — Raycaster so clicking a city opens an info card
+  27. Time-skip controls — Play/pause/speed buttons
+
+  ---
+  Highest impact, lowest effort (do these first):
+  - UnrealBloomPass for city glow (already in your stack)
+  - NASA Blue Marble texture via TextureLoader
+  - Bank/roll animation on turns
+  - HUD distance counter
+  - Contrail fade over time
+
+  Want me to implement any of these?

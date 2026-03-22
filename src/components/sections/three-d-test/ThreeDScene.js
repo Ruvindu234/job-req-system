@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 export default function ThreeDScene() {
 	const mountRef = useRef(null);
@@ -34,8 +35,8 @@ export default function ThreeDScene() {
 			scene.add(new THREE.Points(geo, new THREE.PointsMaterial({ color: 0xffffff, size: 0.25 })));
 		}
 
-		// ── Earth texture ──────────────────────────────────────────────────
-		function makeEarthTexture() {
+		// ── Earth (GLTF cartoon model) — removed canvas texture functions ──
+		function makeEarthTexture_UNUSED() {
 			const tc = document.createElement('canvas');
 			tc.width = 2048; tc.height = 1024;
 			const ctx = tc.getContext('2d');
@@ -301,20 +302,194 @@ export default function ThreeDScene() {
 			return new THREE.CanvasTexture(tc);
 		}
 
-		const R = 2;
-		const earthMesh = new THREE.Mesh(
-			new THREE.SphereGeometry(R,64,64),
-			new THREE.MeshPhongMaterial({ map: makeEarthTexture(), shininess: 20, specular: new THREE.Color(0x113366) })
+		// ── Height / bump map (unused — Earth now loaded from GLTF) ───────
+		function makeHeightMap_UNUSED() {
+			const tc = document.createElement('canvas');
+			tc.width = 2048; tc.height = 1024;
+			const ctx = tc.getContext('2d');
+
+			// Deep ocean base
+			ctx.fillStyle = '#1a1a1a';
+			ctx.fillRect(0, 0, 2048, 1024);
+
+			const xy  = (lon, lat) => [((lon + 180) / 360) * 2048, ((90 - lat) / 180) * 1024];
+			const fill = (pts, hex) => {
+				ctx.beginPath(); ctx.fillStyle = hex;
+				ctx.moveTo(...xy(pts[0][0], pts[0][1]));
+				pts.slice(1).forEach(p => ctx.lineTo(...xy(p[0], p[1])));
+				ctx.closePath(); ctx.fill();
+			};
+			// Gradient-filled strip for mountain ranges
+			const ridge = (pts, bright) => {
+				if (pts.length < 2) return;
+				const [x0,y0] = xy(pts[0][0], pts[0][1]);
+				const [x1,y1] = xy(pts[pts.length-1][0], pts[pts.length-1][1]);
+				const g = ctx.createLinearGradient(x0,y0,x1,y1);
+				g.addColorStop(0,'#111');
+				g.addColorStop(0.5, bright);
+				g.addColorStop(1,'#111');
+				ctx.beginPath(); ctx.strokeStyle = g;
+				ctx.lineWidth = 18; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+				ctx.moveTo(x0, y0);
+				pts.slice(1).forEach(p => ctx.lineTo(...xy(p[0], p[1])));
+				ctx.stroke();
+				// Softer halo
+				ctx.lineWidth = 34; ctx.globalAlpha = 0.3;
+				ctx.stroke();
+				ctx.globalAlpha = 1;
+			};
+
+			// ── Continental shelves (shallow ocean) ───────────────────────
+			// Slightly lighter than deep ocean around coastlines
+			fill([[-168,72],[-52,72],[-52,50],[-65,44],[-82,23],[-92,16],[-85,10],[-78,8],[-75,5],[-115,20],[-125,50],[-140,60],[-168,72]], '#3a3a3a');
+			fill([[-82,12],[-62,12],[-38,5],[-35,-5],[-35,-55],[-68,-55],[-75,-40],[-80,-30],[-82,-12],[-82,12]], '#3a3a3a');
+			fill([[-18,38],[42,36],[55,70],[30,72],[10,72],[-10,62],[-12,50],[-10,36]], '#3a3a3a');
+			fill([[-18,36],[-18,-36],[18,-36],[35,-36],[44,-12],[52,10],[55,38],[42,36],[-18,36]], '#3a3a3a');
+			fill([[45,72],[180,72],[180,50],[140,12],[108,5],[95,5],[80,8],[68,20],[60,22],[45,36],[45,72]], '#3a3a3a');
+			fill([[114,-34],[154,-28],[145,-12],[142,-10],[131,-12],[114,-22],[113,-26],[114,-34]], '#3a3a3a');
+
+			// ── Lowland terrain (plains, basins) ──────────────────────────
+			fill([[-168,72],[-52,72],[-52,50],[-65,44],[-82,23],[-92,16],[-85,10],[-78,8],[-75,5],[-115,20],[-125,50],[-140,60],[-168,72]], '#585858');
+			fill([[-82,12],[-62,12],[-38,5],[-35,-5],[-35,-55],[-68,-55],[-75,-40],[-80,-30],[-82,-12],[-82,12]], '#525252');
+			fill([[-18,38],[42,36],[55,70],[30,72],[10,72],[-10,62],[-12,50],[-10,36]], '#525252');
+			fill([[-18,36],[-18,-36],[18,-36],[35,-36],[44,-12],[52,10],[55,38],[42,36],[-18,36]], '#4e4e4e');
+			fill([[45,72],[180,72],[180,50],[140,12],[108,5],[95,5],[80,8],[68,20],[60,22],[45,36],[45,72]], '#525252');
+			fill([[114,-34],[154,-28],[145,-12],[142,-10],[131,-12],[114,-22],[113,-26],[114,-34]], '#505050');
+
+			// ── Plateaus & highlands ───────────────────────────────────────
+			// Tibetan Plateau
+			fill([[72,28],[104,28],[104,36],[92,40],[78,36],[72,32],[72,28]], '#909090');
+			// Colorado Plateau / US interior
+			fill([[-115,32],[-104,32],[-104,42],[-115,42],[-115,32]], '#707070');
+			// Brazilian Highlands
+			fill([[-50,-5],[-35,-5],[-35,-25],[-50,-25],[-50,-5]], '#686868');
+			// East African Plateau
+			fill([[28,-5],[40,-5],[40,-15],[28,-15],[28,-5]], '#6e6e6e');
+			// Australian interior (flat — keep medium)
+			fill([[120,-20],[140,-20],[140,-35],[120,-35],[120,-20]], '#585858');
+			// Greenland ice sheet (high elevation)
+			fill([[-60,68],[-20,68],[-20,76],[-60,76],[-60,68]], '#c0c0c0');
+			// Antarctic (high ice sheet)
+			fill([[-180,-70],[180,-70],[180,-90],[-180,-90],[-180,-70]], '#d0d0d0');
+
+			// ── Major mountain ranges ──────────────────────────────────────
+			// Himalayas (tallest on Earth)
+			ctx.lineWidth = 22;
+			ridge([[72,36],[78,34],[84,28],[90,28],[96,26],[102,26]], '#ffffff');
+			// Karakoram + Hindu Kush
+			ridge([[66,36],[72,36],[76,38],[68,38],[66,36]], '#e0e0e0');
+			// Andes
+			ridge([[-76,10],[-76,0],[-76,-15],[-70,-30],[-68,-40],[-68,-55]], '#d8d8d8');
+			// Rocky Mountains
+			ridge([[-120,30],[-118,36],[-115,42],[-112,48],[-110,55]], '#c8c8c8');
+			// Alps
+			ridge([[6,44],[8,47],[10,47],[14,46],[16,46]], '#d0d0d0');
+			// Caucasus
+			ridge([[40,42],[44,43],[48,42],[44,42]], '#c0c0c0');
+			// Urals
+			ridge([[58,52],[60,56],[60,60],[60,64],[58,68]], '#a0a0a0');
+			// Atlas Mountains
+			ridge([[-6,34],[0,33],[6,33],[10,32]], '#b0b0b0');
+			// Zagros (Iran)
+			ridge([[44,30],[48,32],[52,34],[56,28]], '#b8b8b8');
+			// Great Dividing Range (Australia)
+			ridge([[151,-28],[150,-32],[150,-36],[148,-38]], '#a0a0a0');
+			// Ethiopian Highlands
+			ridge([[36,8],[38,10],[40,12],[38,14]], '#b0b0b0');
+			// Appalachians
+			ridge([[-84,34],[-82,36],[-80,38],[-78,42],[-76,44]], '#909090');
+			// Sierra Nevada
+			ridge([[-120,36],[-118,38],[-119,40],[-120,42]], '#b0b0b0');
+			// Scandinavian mountains
+			ridge([[6,58],[8,62],[14,66],[16,68],[18,70]], '#a8a8a8');
+			// Pyrenees
+			ridge([[-2,43],[0,43],[2,42],[4,42]], '#c0c0c0');
+
+			// ── Ocean trenches (darkest points) ───────────────────────────
+			ctx.lineWidth = 10; ctx.globalAlpha = 1;
+			// Mariana Trench
+			ridge([[143,18],[145,16],[147,14],[147,12]], '#050505');
+			// Philippine Trench
+			ridge([[126,13],[127,10],[127,7]], '#080808');
+			// Tonga Trench
+			ridge([[-175,-16],[-174,-20],[-174,-24]], '#060606');
+			// Peru-Chile Trench
+			ridge([[-76,-5],[-74,-15],[-72,-25],[-70,-35]], '#080808');
+			// Java Trench
+			ridge([[104,-10],[106,-10],[108,-10],[110,-10]], '#080808');
+
+			// ── Ice caps gradient ──────────────────────────────────────────
+			const iceTop = ctx.createLinearGradient(0,0,0,100);
+			iceTop.addColorStop(0,'rgba(220,220,220,1)');
+			iceTop.addColorStop(1,'rgba(220,220,220,0)');
+			ctx.fillStyle = iceTop; ctx.fillRect(0,0,2048,100);
+			const iceBot = ctx.createLinearGradient(0,924,0,1024);
+			iceBot.addColorStop(0,'rgba(220,220,220,0)');
+			iceBot.addColorStop(1,'rgba(220,220,220,1)');
+			ctx.fillStyle = iceBot; ctx.fillRect(0,924,2048,100);
+
+			// ── Pixel-level terrain noise ──────────────────────────────────
+			const id = ctx.getImageData(0, 0, 2048, 1024);
+			const d  = id.data;
+			for (let i = 0; i < d.length; i += 4) {
+				const n = (Math.random() - 0.5) * 18;
+				const v = Math.max(0, Math.min(255, d[i] + n));
+				d[i] = d[i+1] = d[i+2] = v;
+			}
+			ctx.putImageData(id, 0, 0);
+
+			return new THREE.CanvasTexture(tc);
+		}
+
+		const R = 2; // reference radius — all markers/curves use this scale
+
+		// Single loader instance shared by both Earth and plane assets
+		const gltfLoader = new GLTFLoader();
+
+		// earthGroup acts as the Earth: children rotate with it,
+		// markers are parented to it, loaded from GLTF asynchronously.
+		const earthGroup = new THREE.Group();
+		scene.add(earthGroup);
+
+		gltfLoader.load(
+			'/earth_cartoon.glb',
+			(gltf) => {
+				const model = gltf.scene;
+
+				// Scale so the model's longest axis = 2 * R (diameter)
+				const box    = new THREE.Box3().setFromObject(model);
+				const size   = box.getSize(new THREE.Vector3());
+				const maxDim = Math.max(size.x, size.y, size.z);
+				model.scale.setScalar((R * 2) / maxDim);
+
+				// Re-centre pivot to bounding-box centre
+				const centre = box.getCenter(new THREE.Vector3());
+				model.position.sub(centre.multiplyScalar((R * 2) / maxDim));
+
+				earthGroup.add(model);
+			},
+			undefined,
+			(err) => console.error('earth GLTFLoader error:', err)
 		);
-		scene.add(earthMesh);
-		scene.add(new THREE.Mesh(new THREE.SphereGeometry(R*1.015,48,48), new THREE.MeshPhongMaterial({ color:0x4488ff, transparent:true, opacity:0.08, side:THREE.FrontSide })));
-		const cloudMesh = new THREE.Mesh(new THREE.SphereGeometry(R*1.006,48,48), new THREE.MeshPhongMaterial({ map:makeCloudTexture(), transparent:true, opacity:0.55, depthWrite:false }));
+
+		// Atmosphere glow (thin blue shell outside the globe)
+		scene.add(new THREE.Mesh(
+			new THREE.SphereGeometry(R * 1.015, 48, 48),
+			new THREE.MeshPhongMaterial({ color: 0x4488ff, transparent: true, opacity: 0.08, side: THREE.FrontSide })
+		));
+
+		// Cloud layer (slow-rotating translucent sphere)
+		const cloudMesh = new THREE.Mesh(
+			new THREE.SphereGeometry(R * 1.006, 48, 48),
+			new THREE.MeshPhongMaterial({ map: makeCloudTexture(), transparent: true, opacity: 0.55, depthWrite: false })
+		);
 		scene.add(cloudMesh);
 
 		// Lighting
-		const sun = new THREE.DirectionalLight(0xfff5dd,1.8); sun.position.set(6,3,4); scene.add(sun);
-		scene.add(new THREE.AmbientLight(0x223355, 2.5));
-		const rim = new THREE.DirectionalLight(0x3366aa, 0.9); rim.position.set(-5,-2,-3); scene.add(rim);
+		// Full day lighting — bright ambient floods all sides, no dark hemisphere
+		scene.add(new THREE.AmbientLight(0xffffff, 2.8));
+		const sun = new THREE.DirectionalLight(0xfff5dd, 1.0); sun.position.set(6,3,4); scene.add(sun);
+		const fill = new THREE.DirectionalLight(0xffffff, 0.8); fill.position.set(-6,-3,-4); scene.add(fill);
 
 		// ── Sydney helpers ─────────────────────────────────────────────────
 		const ll2v3 = (lat, lon, r) => {
@@ -332,7 +507,7 @@ export default function ThreeDScene() {
 		markerG.add(new THREE.Mesh(new THREE.RingGeometry(0.05,0.08,32), mkMat1));
 		const ring2Mesh = new THREE.Mesh(new THREE.RingGeometry(0.05,0.08,32), mkMat2);
 		markerG.add(ring2Mesh);
-		earthMesh.add(markerG); markerG.visible = false;
+		earthGroup.add(markerG); markerG.visible = false;
 
 		// Sydney Opera House (simplified iconic shells)
 		function buildOperaHouse() {
@@ -357,47 +532,44 @@ export default function ThreeDScene() {
 		const sydNorm = sydPos.clone().normalize();
 		opera.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0), sydNorm);
 		opera.position.copy(sydNorm.clone().multiplyScalar(R+0.008));
-		earthMesh.add(opera); opera.visible = false;
+		earthGroup.add(opera); opera.visible = false;
 
-		// ── Airplane ───────────────────────────────────────────────────────
-		function buildPlane() {
-			const g = new THREE.Group();
-			const wm = new THREE.MeshPhongMaterial({ color:0xeeeeee, shininess:120 });
-			const em = new THREE.MeshPhongMaterial({ color:0x777777, shininess:180 });
-			const bm = new THREE.MeshPhongMaterial({ color:0x1a3a8a });
+		// ── Airplane (GLTF model) ──────────────────────────────────────────
+		// Wrapper group: the animation code orients this along the tangent.
+		// The inner pivot corrects the model's native forward axis → +X.
+		const plane = new THREE.Group();
+		plane.visible = true;
+		scene.add(plane);
 
-			const body = new THREE.Mesh(new THREE.CylinderGeometry(0.022,0.016,0.3,10), wm);
-			body.rotation.z = Math.PI/2; g.add(body);
-			const nose = new THREE.Mesh(new THREE.ConeGeometry(0.022,0.07,10), wm);
-			nose.rotation.z = -Math.PI/2; nose.position.x = 0.18; g.add(nose);
-			const tailCone = new THREE.Mesh(new THREE.ConeGeometry(0.016,0.05,10), wm);
-			tailCone.rotation.z = Math.PI/2; tailCone.position.x = -0.175; g.add(tailCone);
+		gltfLoader.load(
+			'/cartoon_plane.glb',
+			(gltf) => {
+				const model = gltf.scene;
 
-			const wShape = new THREE.Shape();
-			wShape.moveTo(0.02,0); wShape.lineTo(-0.14,-0.1); wShape.lineTo(-0.16,-0.1); wShape.lineTo(-0.04,0);
-			const wGeo = new THREE.ShapeGeometry(wShape);
-			const wR = new THREE.Mesh(wGeo, wm); wR.rotation.x = Math.PI/2; g.add(wR);
-			const wL = wR.clone(); wL.scale.z = -1; g.add(wL);
+				// Fit model to a consistent size regardless of source scale
+				const box = new THREE.Box3().setFromObject(model);
+				const size = box.getSize(new THREE.Vector3());
+				const maxDim = Math.max(size.x, size.y, size.z);
+				model.scale.setScalar(0.18 / maxDim);
 
-			[-1,1].forEach(side => {
-				const wl = new THREE.Mesh(new THREE.BoxGeometry(0.004,0.02,0.008), wm);
-				wl.position.set(-0.13,0.01,side*0.1); wl.rotation.x=0.25*side; g.add(wl);
-				const eng = new THREE.Mesh(new THREE.CylinderGeometry(0.01,0.01,0.045,8), em);
-				eng.rotation.z=Math.PI/2; eng.position.set(-0.03,-0.01,side*0.065); g.add(eng);
-			});
+				// Re-center so the model pivots from its centre
+				const centre = box.getCenter(new THREE.Vector3());
+				model.position.sub(centre.multiplyScalar(0.18 / maxDim));
 
-			const tf = new THREE.Mesh(new THREE.BoxGeometry(0.06,0.045,0.004), wm);
-			tf.position.set(-0.125,0.022,0); g.add(tf);
-			const hs = new THREE.Mesh(new THREE.BoxGeometry(0.04,0.003,0.06), wm);
-			hs.position.set(-0.135,0.008,0); g.add(hs);
+				// Rotate so the model's nose points along local +X
+				// (GLTF convention is -Z forward; rotate 90° around Y)
+				model.rotation.y = -Math.PI / 2;
 
-			const stripe = new THREE.Mesh(new THREE.CylinderGeometry(0.0235,0.017,0.28,10), bm);
-			stripe.rotation.z=Math.PI/2; stripe.position.x=0.005; stripe.scale.set(1,0.08,1); g.add(stripe);
-			const eGlow = new THREE.PointLight(0xff8822,0.5,0.3);
-			eGlow.position.set(-0.03,-0.01,0); g.add(eGlow);
-			return g;
-		}
-		const plane = buildPlane(); plane.visible = false; scene.add(plane);
+				// Engine glow light (kept from procedural version)
+				const eGlow = new THREE.PointLight(0xff8822, 0.5, 0.3);
+				eGlow.position.set(0, 0, 0);
+				plane.add(eGlow);
+
+				plane.add(model);
+			},
+			undefined,
+			(err) => console.error('GLTFLoader error:', err)
+		);
 
 		// ── Condensation trail ─────────────────────────────────────────────
 		const trailPts = []; let trailMesh = null;
@@ -416,25 +588,35 @@ export default function ThreeDScene() {
 		// CatmullRomCurve3 with dense waypoints keeps the path above the surface.
 		const ALT = R + 1.2; // cruise altitude
 		const flightWaypoints = [
-			ll2v3( 34, -118, R+1.5),  // Los Angeles (take-off)
-			ll2v3( 38,  -90, ALT),    // Central USA
-			ll2v3( 42,  -70, ALT),    // Eastern USA
-			ll2v3( 45,  -50, ALT),    // W Atlantic
-			ll2v3( 44,  -30, ALT),    // Mid Atlantic
-			ll2v3( 40,  -10, ALT),    // near Portugal
-			ll2v3( 36,   10, ALT),    // Mediterranean
-			ll2v3( 30,   35, ALT),    // Middle East entry
-			ll2v3( 25,   55, ALT),    // UAE / Dubai
-			ll2v3( 19,   72, ALT),    // Mumbai / India W coast
-			ll2v3( 12,   80, ALT),    // SE India
-			ll2v3(  5,   95, ALT),    // Bay of Bengal
-			ll2v3( -5,  110, ALT),    // Sumatra / Indonesia
-			ll2v3(-10,  125, ALT),    // Java Sea
-			ll2v3(-15,  138, R+1.0),  // Timor Sea
-			ll2v3(-17,  146, R+0.8),  // NE Australia – Cairns
-			sydPos.clone().normalize().multiplyScalar(R + 0.04), // Sydney
+			// ── Takeoff from Los Angeles ──────────────────────────────────
+			ll2v3( 34, -118, R + 0.01), // on the ground at LA
+			ll2v3( 35, -114, R + 0.25), // rotate & lift off
+			ll2v3( 36, -108, R + 0.60), // climbing
+			ll2v3( 38,  -96, R + 0.95), // still climbing
+			// ── Cruise ────────────────────────────────────────────────────
+			ll2v3( 42,  -70, ALT),      // Eastern USA
+			ll2v3( 45,  -50, ALT),      // W Atlantic
+			ll2v3( 44,  -30, ALT),      // Mid Atlantic
+			ll2v3( 40,  -10, ALT),      // near Portugal
+			ll2v3( 36,   10, ALT),      // Mediterranean
+			ll2v3( 30,   35, ALT),      // Middle East entry
+			ll2v3( 25,   55, ALT),      // UAE / Dubai
+			ll2v3( 19,   72, ALT),      // Mumbai / India W coast
+			ll2v3( 12,   80, ALT),      // SE India
+			ll2v3(  5,   95, ALT),      // Bay of Bengal
+			ll2v3( -5,  110, ALT),      // Sumatra / Indonesia
+			ll2v3(-10,  125, ALT),      // Java Sea
+			// ── Descent into Sydney ───────────────────────────────────────
+			ll2v3(-13,  136, R + 0.95), // start descent
+			ll2v3(-17,  143, R + 0.60), // approaching QLD coast
+			ll2v3(-24,  148, R + 0.30), // descending over NSW
+			ll2v3(-30,  151, R + 0.10), // final approach
+			sydPos.clone().normalize().multiplyScalar(R + 0.01), // touch down Sydney
 		];
 		const flightCurve = new THREE.CatmullRomCurve3(flightWaypoints, false, 'catmullrom', 0.5);
+
+		// Park plane at LA ground position during intro orbit
+		plane.position.copy(flightWaypoints[0]);
 
 		// ── Animation loop ─────────────────────────────────────────────────
 		const clock = new THREE.Clock();
@@ -445,6 +627,18 @@ export default function ThreeDScene() {
 
 		const phaseStatus = ['EARTH','LOS ANGELES → DUBAI → INDIA → SYDNEY','APPROACHING SYDNEY...','WELCOME TO AUSTRALIA ✈'];
 
+		const FLIGHT_DURATION = 24; // seconds — long enough to feel cinematic
+		let   bankAngle       = 0;  // smoothed bank, persists across frames
+		const _right   = new THREE.Vector3();
+		const _up      = new THREE.Vector3();
+		const _forward = new THREE.Vector3();
+		const _nextFwd = new THREE.Vector3();
+		const _camTgt  = new THREE.Vector3();
+		const _lookAt  = new THREE.Vector3();
+		const _rotMat  = new THREE.Matrix4();
+		const _tQuat   = new THREE.Quaternion();
+		const _bankQ   = new THREE.Quaternion();
+
 		function animate() {
 			rafId = requestAnimationFrame(animate);
 			const dt = clock.getDelta();
@@ -452,40 +646,113 @@ export default function ThreeDScene() {
 			cloudMesh.rotation.y += dt * 0.018;
 
 			if (phase === 0) {
-				camTheta += dt * 0.18;
-				camera.position.set(CAM_D*Math.sin(camTheta), CAM_D*0.35, CAM_D*Math.cos(camTheta));
-				camera.lookAt(0,0,0);
-				if (phaseT > 2.5) { phase=1; phaseT=0; plane.visible=true; setStatus(phaseStatus[1]); }
+				// Slow orbit while Earth is displayed
+				camTheta += dt * 0.15;
+				camera.position.set(
+					CAM_D * Math.sin(camTheta),
+					CAM_D * 0.35,
+					CAM_D * Math.cos(camTheta)
+				);
+				camera.lookAt(0, 0, 0);
+				if (phaseT > 2.5) {
+					phase = 1; phaseT = 0;
+					setStatus(phaseStatus[1]);
+				}
 
 			} else if (phase === 1) {
-				const prog = Math.min(phaseT/11, 1);
-				const ease = prog<0.5 ? 2*prog*prog : -1+(4-2*prog)*prog;
+				const prog = Math.min(phaseT / FLIGHT_DURATION, 1);
+
+				// Cubic ease-in-out: smooth acceleration off the runway,
+				// smooth deceleration into Sydney
+				const ease = prog < 0.5
+					? 4 * prog * prog * prog
+					: 1 - Math.pow(-2 * prog + 2, 3) / 2;
+
+				// ── Position ─────────────────────────────────────────────
 				const pos = flightCurve.getPoint(ease);
-				const tan = flightCurve.getTangent(ease).normalize();
 				plane.position.copy(pos);
-				plane.quaternion.setFromUnitVectors(new THREE.Vector3(1,0,0), tan);
+
+				// ── Orientation ──────────────────────────────────────────
+				// forward  = direction of travel (curve tangent)
+				// earthNorm = outward from Earth centre (defines "up" for the aircraft)
+				// right    = perpendicular to both, points to right wing
+				// up       = recomputed so it is exactly perpendicular to forward
+				flightCurve.getTangent(ease, _forward).normalize();
+
+				const earthNorm = pos.clone().normalize();
+
+				_right.crossVectors(earthNorm, _forward).normalize();
+				_up.crossVectors(_forward, _right).normalize();
+
+				// Banking — measure how much the path curves left/right
+				// by comparing the tangent a tiny step ahead
+				const ahead = Math.min(1, ease + 0.006);
+				flightCurve.getTangent(ahead, _nextFwd).normalize();
+
+				const turnRate   = _nextFwd.clone().sub(_forward).dot(_right);
+				const targetBank = THREE.MathUtils.clamp(turnRate * 22, -0.6, 0.6);
+				// Low-pass filter the bank so it never snaps
+				bankAngle += (targetBank - bankAngle) * (dt * 3.5);
+
+				// Build rotation matrix: X=forward, Y=up, Z=-right (right-hand)
+				_rotMat.makeBasis(_forward, _up, _right.clone().negate());
+				_tQuat.setFromRotationMatrix(_rotMat);
+
+				// Roll the plane around its forward axis by bankAngle
+				_bankQ.setFromAxisAngle(_forward, bankAngle);
+				_tQuat.premultiply(_bankQ);
+
+				// Slerp current quaternion toward target — never a hard snap
+				plane.quaternion.slerp(_tQuat, dt * 4.5);
+
+				// ── Trail ────────────────────────────────────────────────
 				updateTrail(pos);
-				const back = tan.clone().negate().multiplyScalar(1.0+(1-ease)*2.5);
-				camera.position.lerp(pos.clone().add(back).add(new THREE.Vector3(0,0.35,0)), 0.04);
-				camera.lookAt(pos);
-				if (prog >= 1) { phase=2; phaseT=0; setStatus(phaseStatus[2]); }
+
+				// ── Camera: full globe orbital view (matches screenshot) ─────
+				// Camera sits above the plane's region of the globe at a
+				// fixed distance so the entire Earth stays in frame.
+				// Mix the plane's outward direction with world-up so the
+				// view tilts slightly overhead rather than dead side-on.
+				const planeDir = earthNorm.clone(); // outward from Earth at plane
+				const worldUp  = new THREE.Vector3(0, 1, 0);
+				// 0.35 blend toward world-up → ~20° overhead angle
+				_camTgt.copy(
+					planeDir.lerp(worldUp, 0.35).normalize().multiplyScalar(CAM_D)
+				);
+				// Very slow lerp so globe glides, never jumps
+				camera.position.lerp(_camTgt, dt * 0.6);
+				camera.lookAt(0, 0, 0); // always center the Earth
+
+				if (prog >= 1) {
+					phase = 2; phaseT = 0;
+					setStatus(phaseStatus[2]);
+				}
 
 			} else if (phase === 2) {
 				if (phaseT > 0.8) {
-					markerG.visible=true; opera.visible=true; plane.visible=false;
-					if (trailMesh) { scene.remove(trailMesh); trailMesh=null; }
-					phase=3; phaseT=0; setStatus(phaseStatus[3]);
+					markerG.visible = true;
+					opera.visible   = true;
+					plane.visible   = false;
+					if (trailMesh) { scene.remove(trailMesh); trailMesh = null; }
+					phase = 3; phaseT = 0;
+					setStatus(phaseStatus[3]);
 				}
 
 			} else if (phase === 3) {
-				earthMesh.rotation.y += dt*0.04;
-				const pulse=(Math.sin(phaseT*2.5)+1)/2;
-				ring2Mesh.scale.setScalar(1+pulse*0.6);
-				mkMat2.opacity=0.4-pulse*0.35;
-				mkMat1.opacity=0.7+pulse*0.3;
-				camTheta += dt*0.12;
-				camera.position.lerp(new THREE.Vector3(CAM_D*0.8*Math.sin(camTheta), CAM_D*0.3, CAM_D*0.8*Math.cos(camTheta)), 0.015);
-				camera.lookAt(0,0,0);
+				earthGroup.rotation.y += dt * 0.04;
+				const pulse = (Math.sin(phaseT * 2.5) + 1) / 2;
+				ring2Mesh.scale.setScalar(1 + pulse * 0.6);
+				mkMat2.opacity = 0.4 - pulse * 0.35;
+				mkMat1.opacity = 0.7 + pulse * 0.3;
+				camTheta += dt * 0.12;
+				camera.position.lerp(
+					new THREE.Vector3(
+						CAM_D * 0.8 * Math.sin(camTheta),
+						CAM_D * 0.3,
+						CAM_D * 0.8 * Math.cos(camTheta)
+					), 0.015
+				);
+				camera.lookAt(0, 0, 0);
 			}
 
 			renderer.render(scene, camera);
