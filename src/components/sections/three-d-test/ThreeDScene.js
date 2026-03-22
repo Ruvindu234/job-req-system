@@ -555,11 +555,11 @@ export default function ThreeDScene() {
 				const box = new THREE.Box3().setFromObject(model);
 				const size = box.getSize(new THREE.Vector3());
 				const maxDim = Math.max(size.x, size.y, size.z);
-				model.scale.setScalar(0.18 / maxDim);
+				model.scale.setScalar(0.36 / maxDim);
 
 				// Re-center so the model pivots from its centre
 				const centre = box.getCenter(new THREE.Vector3());
-				model.position.sub(centre.multiplyScalar(0.18 / maxDim));
+				model.position.sub(centre.multiplyScalar(0.36 / maxDim));
 
 				// Rotate so the model's nose points along local +X
 				// (GLTF convention is -Z forward; rotate 90° around Y)
