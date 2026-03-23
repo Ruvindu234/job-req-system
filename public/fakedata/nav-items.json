@@ -24,9 +24,4 @@
 		"name": "Migration",
 		"path": "/migration"
 	},
-	{
-		"id": 6,
-		"name": "3D test",
-		"path": "/3d-test"
-	}
 ]
