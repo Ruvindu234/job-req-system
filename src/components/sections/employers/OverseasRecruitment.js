@@ -37,7 +37,7 @@ const keyPoints = [
 
 const OverseasRecruitment = () => {
 	return (
-		<section className="tj-about-section-two section-space">
+		<section className="tj-about-section-two section-space pb-0">
 			<div className="container">
 
 				{/* ── Section Heading ── */}
