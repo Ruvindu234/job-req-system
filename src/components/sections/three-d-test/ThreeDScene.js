@@ -572,10 +572,24 @@ export default function ThreeDScene() {
 				// (GLTF convention is -Z forward; rotate 90° around Y)
 				model.rotation.y = -Math.PI / 2;
 
-				// Engine glow light (kept from procedural version)
-				const eGlow = new THREE.PointLight(0xff8822, 0.5, 0.3);
+				// Pulsing engine glow light
+				const eGlow = new THREE.PointLight(0xff4400, 2.5, 0.8);
 				eGlow.position.set(0, 0, 0);
 				plane.add(eGlow);
+
+				// Halo aura — slightly larger transparent sphere, additive blend
+				const haloMesh = new THREE.Mesh(
+					new THREE.SphereGeometry(0.18, 16, 16),
+					new THREE.MeshBasicMaterial({
+						color: 0xff6600,
+						transparent: true,
+						opacity: 0.18,
+						blending: THREE.AdditiveBlending,
+						depthWrite: false,
+						side: THREE.FrontSide,
+					})
+				);
+				plane.add(haloMesh);
 
 				plane.add(model);
 			},
@@ -702,6 +716,14 @@ export default function ThreeDScene() {
 			const dt = clock.getDelta();
 			phaseT += dt;
 			cloudMesh.rotation.y += dt * 0.018;
+
+			// Pulse the engine glow light and halo aura
+			const glowPulse = 0.7 + 0.3 * Math.sin(Date.now() * 0.004);
+			const eGlowLight = plane.children.find(c => c.isPointLight);
+			const halo       = plane.children.find(c => c.isMesh && c.geometry?.type === 'SphereGeometry');
+			if (eGlowLight) eGlowLight.intensity        = 2.5 * glowPulse;
+			if (halo)       halo.material.opacity        = 0.18 * glowPulse;
+			if (halo)       halo.scale.setScalar(1 + 0.12 * Math.sin(Date.now() * 0.003));
 
 			if (phase === 0) {
 				// Orbit while Earth is displayed — faster so India comes into view
