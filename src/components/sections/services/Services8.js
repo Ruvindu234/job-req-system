@@ -1,6 +1,4 @@
 "use client";
-import modifyNumber from "@/libs/modifyNumber";
-
 const aboutItems = [
 	{
 		title: "Vision",
@@ -28,8 +26,7 @@ const Services8 = () => {
 						<div className="h8-services-list">
 							{aboutItems.map((item, idx) => (
 								<div key={idx} className="service_item wow fadeInUp" data-wow-delay={`0.${idx + 3}s`}>
-									<span className="no">{modifyNumber(idx + 1)}.</span>
-									<div className="content" style={{ maxWidth: "100%" }}>
+										<div className="content" style={{ maxWidth: "100%" }}>
 										<h4 className="title">{item.title}</h4>
 										<div className="desc">{item.desc}</div>
 									</div>
