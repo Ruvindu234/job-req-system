@@ -21,7 +21,7 @@ const Services8 = () => {
 				<div className="row">
 					<div className="col">
 						<h2 className="sec-title text-anim mb-40" style={{ color: "var(--tj-color-common-white)" }}>
-							Services Built for <span style={{ color: "var(--tj-color-theme-primary)" }}>Business</span> Goal Success
+							Recruitment with <span style={{ color: "var(--tj-color-theme-primary)" }}>Vision</span> and Purpose
 						</h2>
 						<div className="h8-services-list">
 							{aboutItems.map((item, idx) => (
