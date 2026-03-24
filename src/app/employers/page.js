@@ -1,8 +1,7 @@
 import Footer2 from "@/components/layout/footer/Footer2";
 import Header from "@/components/layout/header/Header";
 import EmployersPageHeader from "@/components/sections/employers/EmployersPageHeader";
-import OverseasRecruitment from "@/components/sections/employers/OverseasRecruitment";
-import LocalRecruitment from "@/components/sections/employers/LocalRecruitment";
+import EmployerContent from "@/components/sections/employers/EmployerContent";
 import EmployerEnquiry from "@/components/sections/employers/EmployerEnquiry";
 import Cta1 from "@/components/sections/cta/Cta1";
 import TjMagicCursor from "@/components/shared/others/TjMagicCursor";
@@ -15,8 +14,7 @@ export default function EmployersPage() {
 			<Header isStickyHeader={true} headerType={2} />
 			<main>
 				<EmployersPageHeader />
-				<OverseasRecruitment />
-				<LocalRecruitment />
+				<EmployerContent />
 				<EmployerEnquiry />
 				<Cta1 />
 			</main>
