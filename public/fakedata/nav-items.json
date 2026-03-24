@@ -1,27 +1,27 @@
 [
 	{
 		"id": 1,
-		"name": "Home",
-		"path": "/"
+		"name": "About Us",
+		"path": "/about-us"
 	},
 	{
 		"id": 2,
-		"name": "About",
-		"path": "/about"
-	},
-	{
-		"id": 3,
 		"name": "Employers",
 		"path": "/employers"
 	},
 	{
+		"id": 3,
+		"name": "Job Seekers",
+		"path": "/job-seekers"
+	},
+	{
 		"id": 4,
-		"name": "Employees",
-		"path": "/employees"
+		"name": "Our Sectors",
+		"path": "/our-sectors"
 	},
 	{
 		"id": 5,
-		"name": "Migration",
-		"path": "/migration"
+		"name": "Resources",
+		"path": "/resources"
 	}
 ]
