@@ -55,7 +55,7 @@ const EmployerContent = () => {
 												<i className="tji-double-check"></i>
 												<span>Recruitment fees payable after 3 months of placement (commencement of work), subject to satisfaction with the hire.</span>
 											</li>
-											<li>
+											<li style={{ gridColumn: "1 / -1" }}>
 												<i className="tji-double-check"></i>
 												<span>Flexibility to use your company&apos;s migration agent. If you are new or wish to change your migration agent, we can recommend trusted professionals who provide money-back guarantees and high-quality services to both applicants and companies.</span>
 											</li>
