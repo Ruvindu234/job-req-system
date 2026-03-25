@@ -22,65 +22,62 @@ const EmployerContent = () => {
 
 								{/* titleLarge */}
 								<h3 className="sec-title text-anim">
-									Comprehensive Recruitment &amp; Staffing Solutions for Australian Employers
+									Recruitment is a time-consuming and complex process.
 								</h3>
 
 								<div className="tj-entry-content">
 
-									{/* Two paragraphs */}
+									{/* Intro */}
 									<p className="wow fadeInUp" data-wow-delay="0.1s">
-										Skills In Motion offers integrated recruitment and migration
-										solutions to Australian employers facing skilled shortages,
-										sourcing qualified local and international staff across any
-										eligible industry. Whether you need temporary, permanent, or
-										contract placements, our expert team manages the entire
-										process from sourcing to onboarding.
+										No time to search but need to find talent? <strong>We are here to make your worries disappear!</strong>
 									</p>
-									<p className="wow fadeInUp" data-wow-delay="0.3s">
-										We have extensive databases and relationships with a variety
-										of candidates and agencies to find the right people for the
-										right jobs. Our methodologies place significant emphasis on
-										quality-driven processes to ensure your service requirements
-										are expertly matched. We work on a personal level, adapting
-										to your needs as they change.
+									<p className="wow fadeInUp" data-wow-delay="0.2s">
+										Skills In Motion offers integrated recruitment solutions to
+										Australian employers facing skilled shortages in their
+										industries, by providing both skilled overseas staff and
+										locally sourced talent. Our team of experts can assist
+										employers with readily available skilled candidates across
+										various sectors, or we will search for the right candidate
+										based on your specific requirements, including cultural fit.
 									</p>
 
-									{/* Service Overview */}
+									{/* We Offer */}
 									<div className="tj-check-list">
-										<h4 className="text-anim">Service Overview</h4>
-										<p className="wow fadeInUp" data-wow-delay="0.1s">
-											Our professional account managers ensure your staffing
-											needs are fully met to your complete satisfaction. We
-											take the time to make sure all parties get what they
-											want — saving you time and money by finding the right
-											people for your business.
-										</p>
+										<h4 className="text-anim">We Offer</h4>
 									</div>
-
-									{/* Checklist */}
 									<div className="service-check-list mt-4 wow fadeInUp" data-wow-delay="0.3s">
 										<ul>
 											<li>
 												<i className="tji-double-check"></i>
-												<span>Lowest fee guarantee for employer recruitment services.</span>
+												<span>Highly competitive rates.</span>
 											</li>
 											<li>
 												<i className="tji-double-check"></i>
-												<span>Access to candidates across Europe, Asia &amp; the Middle East.</span>
+												<span>Recruitment fees payable after 3 months of placement (commencement of work), subject to satisfaction with the hire.</span>
 											</li>
 											<li>
 												<i className="tji-double-check"></i>
-												<span>Vast experience as recruiters and registered migration agents.</span>
-											</li>
-											<li>
-												<i className="tji-double-check"></i>
-												<span>We manage the whole process for both employer and applicant.</span>
+												<span>Flexibility to use your company&apos;s migration agent. If you are new or wish to change your migration agent, we can recommend trusted professionals who provide money-back guarantees and high-quality services to both applicants and companies.</span>
 											</li>
 										</ul>
 									</div>
 
-	
-</div>
+									{/* Track Record */}
+									<p className="wow fadeInUp" data-wow-delay="0.4s">
+										We have an impressive track record of recruiting a wide
+										range of personnel across Automotive, Manufacturing,
+										Engineering, Construction, and Hospitality industries.
+										Whether you require a local candidate or a specialist worker
+										from overseas, we have the reach and expertise to find the
+										right candidate for your vacancy.
+									</p>
+
+									{/* CTA text */}
+									<p className="wow fadeInUp" data-wow-delay="0.5s">
+										To learn more and access our applicant database, please send us an inquiry.
+									</p>
+
+								</div>
 							</div>
 						</div>
 					</div>
