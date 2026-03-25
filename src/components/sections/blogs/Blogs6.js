@@ -13,8 +13,15 @@ const Blogs6 = () => {
 								// Latest news
 							</span>
 							<h2 className="sec-title text-anim">
-								Tip and tricks for success
+								Hire seamlessly across industries
 							</h2>
+							<p className="wow fadeInUp" data-wow-delay="0.3s">
+								With over 10 years of experience, we have worked with leading
+								recruitment companies and migration firms, specializing in the
+								industries listed below. Our deep expertise and extensive
+								candidate database make us a ready-to-go solution for finding
+								top talent in these sectors.
+							</p>
 						</div>
 					</div>
 				</div>
