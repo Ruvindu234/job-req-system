@@ -1,8 +1,44 @@
 import BlogCard6 from "@/components/shared/cards/BlogCard6";
-import getBlogs from "@/libs/getBlogs";
+
+const sectors = [
+	{
+		title: "Automotive & Transportation",
+		desc: "From mechanics and auto electricians to logistics coordinators and transport operators, we connect skilled professionals with leading automotive and transport businesses across Australia.",
+		roles: ["Mechanics", "Auto Electricians", "Logistics Coordinators", "Transport Operators"],
+		img2: "/new_images/h2-project-1.webp",
+		url: "#",
+	},
+	{
+		title: "Construction",
+		desc: "We supply qualified tradespeople and construction professionals to residential, commercial, and civil projects. From carpenters to site managers, we have the talent your project demands.",
+		roles: ["Carpenters", "Site Managers", "Labourers", "Project Managers"],
+		img2: "/new_images/h2-project-2.webp",
+		url: "#",
+	},
+	{
+		title: "Engineering & Consulting",
+		desc: "We place mechanical, civil, electrical, and structural engineers with top firms and consultancies. Whether you need a graduate or a senior specialist, our database is ready.",
+		roles: ["Civil Engineers", "Mechanical Engineers", "Structural Engineers", "Consultants"],
+		img2: "/new_images/h2-project-3.webp",
+		url: "#",
+	},
+	{
+		title: "Hospitality",
+		desc: "From front-of-house staff to executive chefs and hotel managers, we recruit for restaurants, hotels, resorts, and catering businesses across Australia and New Zealand.",
+		roles: ["Chefs", "Hotel Managers", "Front-of-House", "Catering Staff"],
+		img2: "/new_images/h2-project-4.webp",
+		url: "#",
+	},
+	{
+		title: "Manufacturing",
+		desc: "We source production workers, quality controllers, machine operators, and team leaders for manufacturing facilities. We understand the pace and precision the industry demands.",
+		roles: ["Machine Operators", "Quality Controllers", "Production Workers", "Team Leaders"],
+		img2: "/new_images/transformative-solution-1.webp",
+		url: "#",
+	},
+];
 
 const Blogs6 = () => {
-	const blogs = getBlogs().slice(1, 3);
 	return (
 		<section className="h6-blog-section section-space">
 			<div className="container">
@@ -10,7 +46,7 @@ const Blogs6 = () => {
 					<div className="col-12">
 						<div className="sec-heading style-2 text-center">
 							<span className="sub-title wow fadeInUp" data-wow-delay="0.2s">
-								// Latest news
+								// Recruitment &amp; Migration Solutions
 							</span>
 							<h2 className="sec-title text-anim">
 								Hire seamlessly across industries
@@ -29,13 +65,11 @@ const Blogs6 = () => {
 					className="row rg-30 justify-content-center wow fadeInUp"
 					data-wow-delay="0.3s"
 				>
-					{blogs?.length
-						? blogs?.map((blog, idx) => (
-								<div key={idx} className="col-xl-6 col-md-12">
-									<BlogCard6 blog={blog} idx={idx} />
-								</div>
-						  ))
-						: ""}
+					{sectors.map((sector, idx) => (
+						<div key={idx} className="col-xl-6 col-md-6 col-12 d-flex">
+							<BlogCard6 blog={sector} idx={idx} />
+						</div>
+					))}
 				</div>
 			</div>
 			<div className="h6-blog-shape move-anim">

@@ -52,4 +52,18 @@
 		}
 	}
 }
+.sector-read-more {
+	font-size: 12px;
+	font-weight: 600;
+	white-space: nowrap;
+	border: 1px solid var(--tj-color-theme-primary);
+	border-radius: 4px;
+	padding: 3px 10px;
+	color: var(--tj-color-theme-primary);
+	transition: all 0.3s ease;
+	&:hover {
+		background: var(--tj-color-theme-primary);
+		color: var(--tj-color-common-white);
+	}
+}
 /* END: Home 6 Blog CSS */
