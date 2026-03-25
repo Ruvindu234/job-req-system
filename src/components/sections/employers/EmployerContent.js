@@ -21,7 +21,7 @@ const EmployerContent = () => {
 								</div>
 
 								{/* titleLarge */}
-								<h3 className="tj-post-title text-anim">
+								<h3 className="sec-title text-anim">
 									Comprehensive Recruitment &amp; Staffing Solutions for Australian Employers
 								</h3>
 
