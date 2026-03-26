@@ -15,7 +15,7 @@ const Services5 = () => {
 			<div className="container">
 				<div className="row align-items-center mb-40">
 					<div className="col-lg-9 col-12">
-						<span className="sub-title wow fadeInUp" data-wow-delay="0.3s">
+						<span className="sub-title wow fadeInUp" data-wow-delay="0.3s" style={{ backgroundColor: "#0075ff", padding: "3px 10px", borderRadius: "8px", color: "#ffffff" }}>
 							Reading material
 						</span>
 						<h2 className="sec-title text-anim" style={{ marginBottom: "12px" }}>
