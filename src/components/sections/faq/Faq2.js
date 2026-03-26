@@ -22,32 +22,24 @@ const Faq2 = () => {
 										className="accordion-item wow fadeInUp"
 										data-wow-delay="0.1s"
 									>
-										<h2 className="accordion-header ">
+										<h2 className="accordion-header">
 											<button
 												className="accordion-button collapsed"
 												data-bs-toggle="collapse"
 												data-bs-target="#collapseOne-1"
 												aria-expanded="false"
 											>
-												<span>01.</span> How do consultants add value to a
-												business?
+												<span>01.</span> Does Skills In Motion provide visa services?
 											</button>
 										</h2>
 										<div
 											id="collapseOne-1"
-											className="accordion-collapse collapse "
+											className="accordion-collapse collapse"
 											data-bs-parent="#accordionExample"
 										>
 											<div className="accordion-body">
 												<p>
-													You might need a consultant if you're facing specifics
-													challenges, such as stagnating our growth, operational
-													inefficiencies, strategic issues, or if you lack
-													expertise in certain areas. Consultants can also help
-													if you need an objective perspective on your business
-													businesses ever changing marketplace. We are committed
-													to the delivering exceptional the value through
-													strategic.
+													No. Your employer will decide which migration agent or service provider they will use to lodge the visa application, including yours.
 												</p>
 											</div>
 										</div>
@@ -56,32 +48,24 @@ const Faq2 = () => {
 										className="accordion-item wow fadeInUp"
 										data-wow-delay="0.3s"
 									>
-										<h2 className="accordion-header ">
+										<h2 className="accordion-header">
 											<button
-												className="accordion-button "
+												className="accordion-button collapsed"
 												data-bs-toggle="collapse"
 												data-bs-target="#collapseOne-2"
 												aria-expanded="false"
 											>
-												<span>02.</span> How do I know if my business needs a
-												consultant?
+												<span>02.</span> How long does it take to be selected after completing my documents?
 											</button>
 										</h2>
 										<div
 											id="collapseOne-2"
-											className="accordion-collapse collapse show"
+											className="accordion-collapse collapse"
 											data-bs-parent="#accordionExample"
 										>
 											<div className="accordion-body">
 												<p>
-													You might need a consultant if you're facing specifics
-													challenges, such as stagnating our growth, operational
-													inefficiencies, strategic issues, or if you lack
-													expertise in certain areas. Consultants can also help
-													if you need an objective perspective on your business
-													businesses ever changing marketplace. We are committed
-													to the delivering exceptional the value through
-													strategic.
+													We cannot provide an exact timeline. The selection process varies depending on factors such as your occupation, skill level, and English proficiency.
 												</p>
 											</div>
 										</div>
@@ -90,15 +74,14 @@ const Faq2 = () => {
 										className="accordion-item wow fadeInUp"
 										data-wow-delay="0.5s"
 									>
-										<h2 className="accordion-header ">
+										<h2 className="accordion-header">
 											<button
 												className="accordion-button collapsed"
 												data-bs-toggle="collapse"
 												data-bs-target="#collapseOne-3"
 												aria-expanded="false"
 											>
-												<span>03.</span> How do business consultants charge for
-												their services?
+												<span>03.</span> Can I apply with my family?
 											</button>
 										</h2>
 										<div
@@ -108,14 +91,7 @@ const Faq2 = () => {
 										>
 											<div className="accordion-body">
 												<p>
-													You might need a consultant if you're facing specifics
-													challenges, such as stagnating our growth, operational
-													inefficiencies, strategic issues, or if you lack
-													expertise in certain areas. Consultants can also help
-													if you need an objective perspective on your business
-													businesses ever changing marketplace. We are committed
-													to the delivering exceptional the value through
-													strategic.
+													This depends on the type of visa and employer requirements. In many cases, family members can be included, but it is best to confirm with your migration agent or employer.
 												</p>
 											</div>
 										</div>
@@ -124,15 +100,14 @@ const Faq2 = () => {
 										className="accordion-item wow fadeInUp"
 										data-wow-delay="0.7s"
 									>
-										<h2 className="accordion-header ">
+										<h2 className="accordion-header">
 											<button
 												className="accordion-button collapsed"
 												data-bs-toggle="collapse"
 												data-bs-target="#collapseOne-4"
 												aria-expanded="false"
 											>
-												<span>04.</span> Can a business consultant guarantee
-												results?
+												<span>04.</span> How much money do I need to immigrate to Australia?
 											</button>
 										</h2>
 										<div
@@ -142,14 +117,7 @@ const Faq2 = () => {
 										>
 											<div className="accordion-body">
 												<p>
-													You might need a consultant if you're facing specifics
-													challenges, such as stagnating our growth, operational
-													inefficiencies, strategic issues, or if you lack
-													expertise in certain areas. Consultants can also help
-													if you need an objective perspective on your business
-													businesses ever changing marketplace. We are committed
-													to the delivering exceptional the value through
-													strategic.
+													The cost varies depending on the visa type, application fees, medical checks, and other requirements. Your migration agent or employer will provide a detailed breakdown based on your situation.
 												</p>
 											</div>
 										</div>
@@ -158,15 +126,14 @@ const Faq2 = () => {
 										className="accordion-item wow fadeInUp"
 										data-wow-delay="0.9s"
 									>
-										<h2 className="accordion-header ">
+										<h2 className="accordion-header">
 											<button
 												className="accordion-button collapsed"
 												data-bs-toggle="collapse"
 												data-bs-target="#collapseOne-5"
 												aria-expanded="false"
 											>
-												<span>05.</span> How can I measure the success of a
-												consulting engagement?
+												<span>05.</span> What is the process of applying for skilled migration to Australia?
 											</button>
 										</h2>
 										<div
@@ -175,20 +142,22 @@ const Faq2 = () => {
 											data-bs-parent="#accordionExample"
 										>
 											<div className="accordion-body">
-												<p>
-													You might need a consultant if you're facing specifics
-													challenges, such as stagnating our growth, operational
-													inefficiencies, strategic issues, or if you lack
-													expertise in certain areas. Consultants can also help
-													if you need an objective perspective on your business
-													businesses ever changing marketplace. We are committed
-													to the delivering exceptional the value through
-													strategic.
-												</p>
+												<p>The process typically includes:</p>
+												<ul>
+													<li>Assessing your experience, technical skills, English proficiency, and ability to provide required documentation</li>
+													<li>Obtaining a skills assessment (if required)</li>
+													<li>Searching for job opportunities once your documents are complete</li>
+													<li>Attending interviews and selection processes</li>
+													<li>Appointment of a migration agent by the employer</li>
+													<li>Payment of visa fees and submission of your visa application</li>
+													<li>Completing medical and character checks</li>
+													<li>Receiving your visa grant</li>
+													<li>Contacting your migration agent, employer, or Skills In Motion for further guidance</li>
+												</ul>
 											</div>
 										</div>
 									</div>
-								</div>
+																</div>
 							</div>
 						</Accordion>
 					</div>
