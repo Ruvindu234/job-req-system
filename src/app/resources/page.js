@@ -15,9 +15,9 @@ export default function ResourcesPage() {
 			<Header isStickyHeader={true} headerType={2} />
 			<main>
 				<ResourcesPageHeader />
-				<Services5 />
-				<Video />
 				<Faq2 />
+				<Video />
+				<Services5 />
 				<Cta1 />
 			</main>
 			<Footer2 />
