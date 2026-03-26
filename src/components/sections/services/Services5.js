@@ -13,24 +13,21 @@ const Services5 = () => {
 	return (
 		<section className="tj-service-section-four section-space">
 			<div className="container">
-				<div className="row">
-					<div className="col-12">
-						<div className="sec-heading-wrap">
-							<div className="sec-heading style-4">
-								<span className="sub-title wow fadeInUp" data-wow-delay="0.3s">
-									Reading material
-								</span>
-								<h2 className="sec-title text-anim">
-									Guides & resources for your recruitment journey
-								</h2>
-							</div>
-
-							<div className="desc">
-								Explore curated reading materials to help candidates and
-								employers navigate recruitment, migration, and career growth.
-							</div>
-							<ButtonPrimary text={"Browse all guides"} url={"/resources"} />
-						</div>
+				<div className="row align-items-center mb-40">
+					<div className="col-lg-9 col-12">
+						<span className="sub-title wow fadeInUp" data-wow-delay="0.3s">
+							Reading material
+						</span>
+						<h2 className="sec-title text-anim" style={{ marginBottom: "12px" }}>
+							Recruitment guides & resources
+						</h2>
+						<p className="mb-0" style={{ color: "inherit", opacity: "0.75" }}>
+							Explore curated reading materials to help candidates and employers
+							navigate recruitment, migration, and career growth.
+						</p>
+					</div>
+					<div className="col-lg-3 col-12 d-none d-lg-flex justify-content-end align-items-center">
+						<ButtonPrimary text={"Browse all guides"} url={"/resources"} />
 					</div>
 				</div>
 				<div className="row">
