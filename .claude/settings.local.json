@@ -38,7 +38,8 @@
       "Bash(python3 -c \":*)",
       "Bash(grep -r \"primary\\\\|--tj\\\\|--color\\\\|theme-color\" /e/Job-req/job-req-system/src/app/assets/sass --include=*.scss -l)",
       "Bash(python3:*)",
-      "Bash(xargs grep:*)"
+      "Bash(xargs grep:*)",
+      "WebSearch"
     ]
   }
 }

@@ -4,6 +4,12 @@ const Faq2 = () => {
 	return (
 		<section className="h7-faq section-space">
 			<div className="container">
+				<div className="row mb-40">
+					<div className="col-12 text-center">
+						<span className="sub-title wow fadeInUp" data-wow-delay="0.1s" style={{ backgroundColor: "#0075ff", padding: "3px 10px", borderRadius: "8px", color: "#ffffff" }}>FAQ</span>
+						<h2 className="sec-title text-anim wow fadeInUp" data-wow-delay="0.2s">Frequently asked questions</h2>
+					</div>
+				</div>
 				<div className="row flex-column-reverse flex-lg-row">
 					<div className="col-12  col-lg-8">
 						<Accordion>
@@ -188,7 +194,7 @@ const Faq2 = () => {
 					</div>
 					<div className="col-12  col-lg-4">
 						<div className="faq-banner">
-							<img src="/images/faq/h7-faq-banner.png" alt="" />
+							<img src="/new_images/h2-about-1.webp" alt="" />
 
 							<div className="sec-heading h9-section-heading style-4">
 								<h4 className="sec-title text-anim">
