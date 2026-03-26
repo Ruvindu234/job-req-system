@@ -29,8 +29,8 @@ const ServiceCard5 = ({
 					</h4>
 					<div className="desc">
 						<p>
-							In today's dynamic business environment, the key to success lies
-							strategics our planning and operational business.
+							Expert tips and step-by-step guides to help you secure the right
+							job, understand visa requirements, and succeed in your new role.
 						</p>
 					</div>
 				</div>

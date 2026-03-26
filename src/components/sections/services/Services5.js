@@ -21,15 +21,15 @@ const Services5 = () => {
 									Reading material
 								</span>
 								<h2 className="sec-title text-anim">
-									In comprehensive service offer.
+									Guides & resources for your recruitment journey
 								</h2>
 							</div>
 
 							<div className="desc">
-								In today's dynamic business environment, the key to success
-								strategics..
+								Explore curated reading materials to help candidates and
+								employers navigate recruitment, migration, and career growth.
 							</div>
-							<ButtonPrimary text={"More services"} url={"/services"} />
+							<ButtonPrimary text={"Browse all guides"} url={"/resources"} />
 						</div>
 					</div>
 				</div>
@@ -53,7 +53,7 @@ const Services5 = () => {
 				<div className="row d-lg-none">
 					<div className="col">
 						<div className="services-btn text-center">
-							<ButtonPrimary text={"More Services"} url={"/services"} />
+							<ButtonPrimary text={"Browse all guides"} url={"/resources"} />
 						</div>
 					</div>
 				</div>
