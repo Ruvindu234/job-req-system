@@ -17,7 +17,7 @@ and add Video
 
   The page order at /resources is now:
   ResourcesPageHeader
-  Services5          ← new
-  Video
   Faq2
+  Video
+  Services5          ← new
   Cta1
