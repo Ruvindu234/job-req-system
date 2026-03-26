@@ -1,5 +1,16 @@
-analyze page
-E:\Job-req\job-req-system - Copy\home-06 
+go to this folder and analyze this page
+E:\Job-req\job-req-system - Copy\home-07 
+E:\Job-req\job-req-system - Copy\home-10
 explain this UI section  
 
 Blog Title
+
+add page header for http://localhost:3001/resources like http://localhost:3001/our-sectors
+and add Video
+
+  Full-width parallax video banner
+  - Background image with parallax scroll effect
+  - Centered play button that opens a YouTube popup (glightbox)
+  - Links to: https://www.youtube.com/watch?v=MLpWrANjFbI
+
+  from E:\Job-req\job-req-system - Copy\home-10
