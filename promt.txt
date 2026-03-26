@@ -1,5 +1,5 @@
 go to this folder and analyze this page
-E:\Job-req\job-req-system - Copy\home-07 
+E:\Job-req\job-req-system - Copy\home-05 
 E:\Job-req\job-req-system - Copy\home-10
 explain this UI section  
 
@@ -14,3 +14,10 @@ and add Video
   - Links to: https://www.youtube.com/watch?v=MLpWrANjFbI
 
   from E:\Job-req\job-req-system - Copy\home-10
+
+  The page order at /resources is now:
+  ResourcesPageHeader
+  Services5          ← new
+  Video
+  Faq2
+  Cta1
