@@ -57,3 +57,24 @@
 - Page Header: `src/components/sections/employers/EmployersPageHeader.js`
 - Content: `src/components/sections/employers/EmployerContent.js`
 - Enquiry Form: `src/components/sections/employers/EmployerEnquiry.js`
+
+
+  Hero / Banner
+  - "Find the Right Talent, Right Now."
+
+  Employers Section
+  - "Hire Smarter, Grow Faster."
+
+  Our Sectors
+  - "We Recruit Across the Industries That Matter."
+
+  CTA Strip
+  - "Ready to Find Your Next Hire?"
+
+
+
+  Contact / Enquiry
+  - "We're Ready When You Are."
+
+  About / Value Proposition
+  - "Recruitment Built Around You."

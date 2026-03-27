@@ -11,12 +11,12 @@ const Hero2 = () => {
 	const heroSlides = [
 		{
 			subtitle: "number #1 solver agency",
-			title: "Transform your business with expert consultation",
+			title: "Find the Right Talent, Right Now.",
 			img: "/new_images/slider-2.webp",
 		},
 		{
 			subtitle: "number #1 solver agency",
-			title: "Transform your business with expert consultation",
+			title: "Find the Right Talent, Right Now.",
 			img: "/new_images/slider-3.webp",
 		},
 	];
@@ -64,7 +64,7 @@ const Hero2 = () => {
 									<div className="slider-wrapper">
 										<div className="slider-content">
 											<span className="sub-title">{subtitle}</span>
-											<h1 className="slider-title">{title}</h1>
+											<h1 className="slider-title" style={{ fontSize: "54px" }}>{title}</h1>
 											<ButtonPrimary
 												text={"Free consultation"}
 												url={"/contact"}

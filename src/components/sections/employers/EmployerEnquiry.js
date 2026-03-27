@@ -24,8 +24,8 @@ const EmployerEnquiry = () => {
 									>
 										// Get in Touch
 									</span>
-									<h2 className="sec-title text-anim">
-										Make an enquiry today
+									<h2 className="sec-title text-anim" style={{ fontSize: "36px" }}>
+										We're Ready When You Are.
 									</h2>
 									<div
 										className="desc wow fadeInUp"

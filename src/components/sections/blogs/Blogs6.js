@@ -48,8 +48,8 @@ const Blogs6 = () => {
 							<span className="sub-title wow fadeInUp" data-wow-delay="0.2s">
 								// Recruitment &amp; Migration Solutions
 							</span>
-							<h2 className="sec-title text-anim">
-								Hire seamlessly across industries
+							<h2 className="sec-title text-anim" style={{ fontSize: "36px" }}>
+								We Recruit Across the Industries That Matter.
 							</h2>
 							<p className="wow fadeInUp" data-wow-delay="0.3s">
 								With over 10 years of experience, we have worked with leading

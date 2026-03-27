@@ -9,7 +9,7 @@ const Cta1 = () => {
 					<div className="col-12">
 						<div className="cta-wrapper">
 							<div className="cta-title">
-								<h2 className="title text-anim">Get consultant now!</h2>
+								<h2 className="title text-anim" style={{ fontSize: "36px" }}>Ready to Find Your Next Hire?</h2>
 							</div>
 							<div className="cta-button wow fadeInUp" data-wow-delay="0.1s">
 								<ButtonPrimary

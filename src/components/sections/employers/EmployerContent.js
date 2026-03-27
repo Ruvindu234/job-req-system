@@ -21,8 +21,8 @@ const EmployerContent = () => {
 								</div>
 
 								{/* titleLarge */}
-								<h3 className="sec-title text-anim">
-									Recruitment is a time-consuming and complex process.
+								<h3 className="sec-title text-anim" style={{ fontSize: "24px" }}>
+									Hire Smarter, Grow Faster.
 								</h3>
 
 								<div className="tj-entry-content">
