@@ -12,7 +12,7 @@ const EmployerContent = () => {
 								{/* Hero Image */}
 								<div className="tj-post-thumb hover:shine wow fadeInUp" data-wow-delay="0.1s">
 									<Image
-										src="/images/service/tj-service-1.webp"
+										src="/new_images/Recruitment.jpg"
 										alt="Employer Recruitment"
 										width={870}
 										height={498}
