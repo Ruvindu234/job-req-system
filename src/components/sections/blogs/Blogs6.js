@@ -62,7 +62,7 @@ const Blogs6 = () => {
 					</div>
 				</div>
 				<div
-					className="row rg-30 justify-content-center wow fadeInUp"
+					className="row rg-30 wow fadeInUp"
 					data-wow-delay="0.3s"
 				>
 					{sectors.map((sector, idx) => (
