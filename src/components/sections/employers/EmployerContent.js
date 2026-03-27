@@ -15,8 +15,8 @@ const EmployerContent = () => {
 										src="/new_images/Recruitment.jpg"
 										alt="Employer Recruitment"
 										width={870}
-										height={498}
-										style={{ height: "auto", width: "100%" }}
+										height={350}
+										style={{ height: "600px", width: "100%", objectFit: "cover" }}
 									/>
 								</div>
 
