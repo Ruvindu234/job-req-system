@@ -1,5 +1,4 @@
 import ButtonPrimary from "@/components/shared/buttons/ButtonPrimary";
-import FormSelect from "@/components/shared/Inputs/FormSelect";
 import Link from "next/link";
 
 const Contact1 = () => {
@@ -99,24 +98,15 @@ const Contact1 = () => {
 										</div>
 										<div className="col-sm-6">
 											<div className="form-input">
-												<div className="tj-nice-select-box">
-													<div className="tj-select">
-														<FormSelect
-															id={"contact"}
-															className="nice-select"
-															defaultValue={"Chose a option"}
-															items={[
-																{ value: "1", name: "Chose a option" },
-																{ value: "2", name: "IT consulting" },
-																{ value: "3", name: "Market research" },
-																{ value: "4", name: "Business process" },
-																{ value: "5", name: "Business consultancy" },
-																{ value: "6", name: "Digital marketing" },
-																{ value: "7", name: "Branding design" },
-															]}
-														/>
-													</div>
-												</div>
+												<select name="service" id="service">
+													<option value="">Choose a option</option>
+													<option value="it-consulting">IT consulting</option>
+													<option value="market-research">Market research</option>
+													<option value="business-process">Business process</option>
+													<option value="business-consultancy">Business consultancy</option>
+													<option value="digital-marketing">Digital marketing</option>
+													<option value="branding-design">Branding design</option>
+												</select>
 											</div>
 										</div>
 										<div className="col-12">
