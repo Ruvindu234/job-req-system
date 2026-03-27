@@ -21,13 +21,7 @@ const EmployersPageHeader = () => {
 						>
 							Employers
 						</h1>
-						<p
-							className="employer-page-tagline wow fadeInUp"
-							data-wow-delay="0.3s"
-						>
-							&ldquo;If you need &lsquo;em, we&rsquo;ll find &lsquo;em&rdquo;
-						</p>
-						<div
+	<div
 							className="tj-page-link wow fadeInUp"
 							data-wow-delay="0.4s"
 						>

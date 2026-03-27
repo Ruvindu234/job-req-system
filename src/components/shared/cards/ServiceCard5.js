@@ -36,13 +36,13 @@ const ServiceCard5 = ({
 				</div>
 				<Link className="blog-btn-2" href={`/services/${id}`}>
 					<span className="btn-icon">
-						<i className="tji-arrow-right"></i>
+						<i className="fas fa-arrow-up-right"></i>
 					</span>
 					<span className="btn-text">Learn more</span>
 				</Link>
 				<Link className="blog-btn-2 mobile-show" href={`/services/${id}`}>
 					<span className="btn-icon">
-						<i className="tji-arrow-right"></i>
+						<i className="fas fa-arrow-up-right"></i>
 					</span>
 				</Link>
 			</div>
