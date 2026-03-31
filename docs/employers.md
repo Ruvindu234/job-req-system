@@ -71,8 +71,6 @@
   CTA Strip
   - "Ready to Find Your Next Hire?"
 
-
-
   Contact / Enquiry
   - "We're Ready When You Are."
 
