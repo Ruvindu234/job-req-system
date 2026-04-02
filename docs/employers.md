@@ -23,6 +23,7 @@
 - Recruitment fees payable after 3 months of placement (subject to satisfaction)
 - Flexibility to use your company's migration agent (with trusted professional recommendations)
 
+
 - Track record paragraph: Automotive, Manufacturing, Engineering, Construction, Hospitality
 - CTA text: *"To learn more and access our applicant database, please send us an inquiry."*
 
