@@ -12,12 +12,7 @@ const Hero2 = () => {
 		{
 			subtitle: "number #1 solver agency",
 			title: "Find the Right Talent, Right Now.",
-			img: "/new_images/slider-2.webp",
-		},
-		{
-			subtitle: "number #1 solver agency",
-			title: "Find the Right Talent, Right Now.",
-			img: "/new_images/slider-3.webp",
+			img: "/new_images/slider-new.jpeg",
 		},
 	];
 
@@ -71,33 +66,6 @@ const Hero2 = () => {
 												className={"slider-button"}
 											/>
 										</div>
-
-										<div className="slider-feature-box">
-											<div className="slider-logo">
-												<Image
-													src="/images/icons/slider-award.svg"
-													alt="Icons"
-													width={80}
-													height={68}
-												/>
-											</div>
-											<div className="desc">
-												<p>
-													Transform your business growth with expert consultancy
-													services by our team of seasoned consultants
-													unparalleled.
-												</p>
-											</div>
-											<div className="slider-shape">
-												<Image
-													src="/images/shapes/slider-shapes.png"
-													alt="Shapes"
-													width={239}
-													height={255}
-													style={{ height: "100%", width: "auto" }}
-												/>
-											</div>
-										</div>
 									</div>
 								</div>
 							</div>
@@ -105,7 +73,7 @@ const Hero2 = () => {
 					</SwiperSlide>
 				))}
 
-				<div className="tj-navigation">
+				<div className="tj-navigation" style={{ display: "none" }}>
 					<div className="tj-btn tj-btn-prev">
 						<i className="fas fa-caret-left"></i>
 					</div>
