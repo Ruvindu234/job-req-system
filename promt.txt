@@ -1,4 +1,5 @@
 $- now explain Hero2 slides ui section
+$- compare with current page and update it
 pagination
 apper
 
