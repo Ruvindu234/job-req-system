@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 const EmployerContent = () => {
 	return (
 		<section className="tj-service-area section-space">
@@ -8,17 +6,6 @@ const EmployerContent = () => {
 					<div className="col-12">
 						<div className="tj-post-wrapper">
 							<div className="tj-post-single-post mb-0">
-
-								{/* Hero Image */}
-								<div className="tj-post-thumb hover:shine wow fadeInUp" data-wow-delay="0.1s">
-									<Image
-										src="/new_images/Recruitment.jpg"
-										alt="Employer Recruitment"
-										width={870}
-										height={350}
-										style={{ height: "600px", width: "100%", objectFit: "cover" }}
-									/>
-								</div>
 
 								{/* titleLarge */}
 								<h3 className="sec-title text-anim" style={{ fontSize: "24px" }}>
@@ -45,22 +32,20 @@ const EmployerContent = () => {
 									<div className="tj-check-list">
 										<h4 className="text-anim">We Offer</h4>
 									</div>
-									<div className="service-check-list mt-4 wow fadeInUp" data-wow-delay="0.3s">
-										<ul>
-											<li>
-												<i className="tji-double-check"></i>
-												<span>Highly competitive rates.</span>
-											</li>
-											<li>
-												<i className="tji-double-check"></i>
-												<span>Recruitment fees payable after 3 months of placement (commencement of work), subject to satisfaction with the hire.</span>
-											</li>
-											<li style={{ gridColumn: "1 / -1" }}>
-												<i className="tji-double-check"></i>
-												<span>Flexibility to use your company&apos;s migration agent. If you are new or wish to change your migration agent, we can recommend trusted professionals who provide money-back guarantees and high-quality services to both applicants and companies.</span>
-											</li>
-										</ul>
-									</div>
+									<ul className="mt-4 wow fadeInUp" data-wow-delay="0.3s" style={{ listStyle: "none", padding: 0, margin: 0 }}>
+										<li style={{ display: "flex", gap: "8px", marginBottom: "12px" }}>
+											<i className="tji-double-check" style={{ fontSize: "18px", color: "var(--tj-color-theme-primary)", marginTop: "3px", flexShrink: 0 }}></i>
+											<span style={{ fontFamily: "var(--tj-ff-heading)", fontWeight: 600, color: "var(--tj-color-heading-primary)" }}>Highly competitive rates.</span>
+										</li>
+										<li style={{ display: "flex", gap: "8px", marginBottom: "12px" }}>
+											<i className="tji-double-check" style={{ fontSize: "18px", color: "var(--tj-color-theme-primary)", marginTop: "3px", flexShrink: 0 }}></i>
+											<span style={{ fontFamily: "var(--tj-ff-heading)", fontWeight: 600, color: "var(--tj-color-heading-primary)" }}>Recruitment fees payable after 3 months of placement (commencement of work), subject to satisfaction with the hire.</span>
+										</li>
+										<li style={{ display: "flex", gap: "8px", marginBottom: "12px" }}>
+											<i className="tji-double-check" style={{ fontSize: "18px", color: "var(--tj-color-theme-primary)", marginTop: "3px", flexShrink: 0 }}></i>
+											<span style={{ fontFamily: "var(--tj-ff-heading)", fontWeight: 600, color: "var(--tj-color-heading-primary)" }}>Flexibility to use your company&apos;s migration agent. If you are new or wish to change your migration agent, we can recommend trusted professionals who provide money-back guarantees and high-quality services to both applicants and companies.</span>
+										</li>
+									</ul>
 
 									{/* Track Record */}
 									<p className="wow fadeInUp" data-wow-delay="0.4s">
