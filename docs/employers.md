@@ -16,7 +16,7 @@
 - Intro: *"No time to search but need to find talent? We are here to make your worries disappear!"*
 - Description paragraph about Skills In Motion's integrated recruitment solutions
 
-**"We Offer" checklist:**
+**"We Offer" list** (plain vertical `<ul>`, no border/grid):
 - Highly competitive rates
 - Recruitment fees payable after 3 months of placement (subject to satisfaction)
 - Flexibility to use your company's migration agent (with trusted professional recommendations)
