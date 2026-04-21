@@ -1,3 +1,4 @@
+import { assetUrl } from "@/libs/assetUrl";
 import makePath from "@/libs/makePath";
 import Link from "next/link";
 import ButtonPrimary from "../buttons/ButtonPrimary";
@@ -8,7 +9,7 @@ const BlogCard6 = ({ blog, idx }) => {
 	return (
 		<div className="blog-style-2 style-6 h-100" style={{ display: "flex", flexDirection: "column" }}>
 			<div className="blog-images" style={{ height: "250px", flex: "none", overflow: "hidden" }}>
-				<img src={img2 ? img2 : "/images/blog/h2-blog-1.webp"} alt={title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+				<img src={assetUrl(img2 ? img2 : "/images/blog/h2-blog-1.webp")} alt={title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
 				{!url && (
 					<div className="blog-date">
 						<span className="date">06</span>
