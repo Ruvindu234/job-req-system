@@ -27,7 +27,7 @@ const Hero2 = () => {
 	}
 
 	return (
-		<section className="tj-hero-slider style-1">
+		<section className="tj-hero-slider style-1 hero-2">
 			<Swiper
 				speed={2000}
 				loop={true}

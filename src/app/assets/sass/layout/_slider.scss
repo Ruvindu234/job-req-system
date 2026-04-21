@@ -1,6 +1,9 @@
 @use "../utilities" as *;
 
 /* !START: Slider CSS */
+.hero-2 .tj-slider-section::before {
+	opacity: 0.3;
+}
 .tj-slider-section {
 	background-position: center;
 	background-repeat: no-repeat;
