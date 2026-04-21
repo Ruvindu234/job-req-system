@@ -11,15 +11,15 @@
 <Header> (static + sticky)
 <main>
   1. Hero2
-  2. About2
-  3. Testimonials2
-  4. Contact1
-  5. Cta1
+  2. Contact1
+  3. Cta1
 </main>
 <Footer2>
 <ClientWrapper />
 <TjMagicCursor type={2}>
 ```
+
+> **Note:** `About2` and `Testimonials2` sections have been removed from this page.
 
 ---
 
@@ -47,75 +47,25 @@ Two instances are rendered:
 **Type:** Full-screen Swiper slider with fade effect
 **Class:** `tj-hero-slider style-1`
 
-### Slides (2 total — auto-loops every 5s):
-Each slide contains:
-- **Background image** — full-section background (`/new_images/slider-2.webp`, `/new_images/slider-3.webp`)
-- **Subtitle** — `"number #1 solver agency"`
-- **Title (H1)** — `"Find the Right Talent, Right Now."` (`fontSize: 54px`)
-- **CTA Button** — `"Free consultation"` → links to `/contact`
+### Slides (1 total — loops):
+The slider contains a single slide:
 
-### Feature Box (on each slide):
-- Award icon (`/images/icons/slider-award.svg`)
-- Description text: *"Transform your business growth with expert consultancy services by our team of seasoned consultants unparalleled."*
-- Decorative shape image (`/images/shapes/slider-shapes.png`)
+| Property | Value |
+|---|---|
+| **Background image** | `/new_images/slider-new.jpeg` |
+| **Subtitle** | `"number #1 solver agency"` |
+| **Title (H1)** | `"Find the Right Talent, Right Now."` (`fontSize: 54px`) |
+| **CTA Button** | `"Free consultation"` → `/contact` |
+
+> **Note:** The feature box (award icon, description text, decorative shape) from the original design has been removed.
 
 ### Navigation:
-- Prev/Next arrow buttons (`fas fa-caret-left` / `fas fa-caret-right`)
-- **Fraction pagination** — displays current/total slide with animated dash progress bar
+- Prev/Next arrow buttons (`fas fa-caret-left` / `fas fa-caret-right`) and fraction pagination exist in the DOM but are **hidden** via `style={{ display: "none" }}`.
+- `updateDashWidth` logic is retained to animate the dash progress bar relative to slide progress.
 
 ---
 
-## 3. About Section (`About2.js`)
-
-**Class:** `tj-about-section-two section-space`
-
-### Layout: Two-column
-
-| Left Column | Right Column |
-|---|---|
-| Portrait image (`/new_images/h2-about-1.webp`) | Section heading + content |
-| Author card (signature image, name "Burdee Nicolas", title "Co. Founder") | Checklist + CTA button |
-
-### Content:
-- **Subtitle:** `// Number #1 solver agency`
-- **Title (H2):** `"Recruitment Built Around You."` (`fontSize: 36px`)
-- **Description paragraph**
-- **Checklist (3 items):**
-  - Expertise and experience
-  - Client Centric approach
-  - Commitment excellences
-- **CTA Button:** `"Free consultation"` → `/about`
-
-### Funfact Box:
-- Animated counter: **20+**
-- Label: *"Years more of business consulting experiences we have."*
-
----
-
-## 4. Testimonials Section (`Testimonials2.js`)
-
-**Class:** `tj-testimonial-section-two section-space`
-
-### Header (centered):
-- **Subtitle:** `// Clients feedback`
-- **Title (H2):** `"Our clients testimonials"`
-
-### Layout: Two-column
-
-| Left Column | Right Column |
-|---|---|
-| Testimonial image (`/new_images/h2-test-1.webp`) | Swiper slider with testimonial cards |
-| Funfact badge: **3.8K+** "Happy clients all over world now." | Prev/Next navigation arrows |
-
-### Slider:
-- Shows **2 testimonials** (from `getTestimonials()`)
-- Each rendered via `TestimonialsCard2`
-- Auto-advances every 5s
-- Left/right arrow navigation (`fas fa-arrow-left` / `fas fa-arrow-right`)
-
----
-
-## 5. Contact Section (`Contact1.js`)
+## 3. Contact Section (`Contact1.js`)
 
 **Class:** `tj-contact-section`
 **Background:** `contact-bg.png` pattern image
@@ -147,7 +97,7 @@ Each slide contains:
 
 ---
 
-## 6. CTA Section (`Cta1.js`)
+## 4. CTA Section (`Cta1.js`)
 
 **Class:** `tj-cta-section`
 
@@ -158,7 +108,7 @@ Each slide contains:
 
 ---
 
-## 7. Footer (`Footer2.js`)
+## 5. Footer (`Footer2.js`)
 
 **Class:** `tj-footer-area footer-2`
 
@@ -189,9 +139,7 @@ Custom cursor component that replaces the default browser cursor with a branded 
 | # | Section | Key Content | CTA |
 |---|---|---|---|
 | — | Header | Logo, Nav, Menu toggle | — |
-| 1 | Hero2 | Full-screen image slider (2 slides) | Free consultation → /contact |
-| 2 | About2 | Portrait image, founder card, checklist, counter (20+) | Free consultation → /about |
-| 3 | Testimonials2 | Image + testimonial slider (2 items) + counter (3.8K+) | — |
-| 4 | Contact1 | Contact info + full contact form | Contact us → /contact |
-| 5 | Cta1 | Bold CTA headline + decorative shapes | Lets talk now → /contact |
+| 1 | Hero2 | Single full-screen image slide (`slider-new.jpeg`), nav hidden | Free consultation → /contact |
+| 2 | Contact1 | Contact info + full contact form | Contact us → /contact |
+| 3 | Cta1 | Bold CTA headline + decorative shapes | Lets talk now → /contact |
 | — | Footer2 | 4-col: Brand, Offices, Resources, Services + copyright | — |
