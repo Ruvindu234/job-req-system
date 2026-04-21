@@ -37,6 +37,8 @@ jobs:
 
       - name: Build Next.js Site
         run: npm run build
+        env:
+          NEXT_PUBLIC_BASE_PATH: /job-req-system
 
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3

@@ -1,3 +1,4 @@
+import { assetUrl } from "@/libs/assetUrl";
 import ButtonPrimary from "@/components/shared/buttons/ButtonPrimary";
 import Link from "next/link";
 
@@ -5,7 +6,7 @@ const Contact1 = () => {
 	return (
 		<section
 			className="tj-contact-section"
-			style={{ backgroundImage: "url('/images/shapes/contact-bg.png')" }}
+			style={{ backgroundImage: `url('${assetUrl("/images/shapes/contact-bg.png")}')` }}
 		>
 			<div className="container">
 				<div className="row">

@@ -40,7 +40,8 @@
       "Bash(python3:*)",
       "Bash(xargs grep:*)",
       "WebSearch",
-      "Bash(find /e/Job-req/job-req-system/src -type f -name *home*)"
+      "Bash(find /e/Job-req/job-req-system/src -type f -name *home*)",
+      "Bash(git remote *)"
     ]
   }
 }

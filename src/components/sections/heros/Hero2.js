@@ -4,6 +4,7 @@ import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
+import { assetUrl } from "@/libs/assetUrl";
 import ButtonPrimary from "@/components/shared/buttons/ButtonPrimary";
 import Image from "next/image";
 
@@ -12,7 +13,7 @@ const Hero2 = () => {
 		{
 			subtitle: "number #1 solver agency",
 			title: "Find the Right Talent, Right Now.",
-			img: "/new_images/slider-new.jpeg",
+			img: assetUrl("/new_images/slider-new.jpeg"),
 		},
 	];
 
