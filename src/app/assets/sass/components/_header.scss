@@ -872,4 +872,52 @@
 	}
 }
 
+// header-2 interactive nav enhancements
+.tj-header-area.header-2,
+.tj-header-area.header-duplicate {
+	.mainmenu ul > li {
+		> a {
+			transition: color 0.3s ease, letter-spacing 0.3s ease;
+
+			&::before {
+				content: "";
+				position: absolute;
+				bottom: 20px;
+				inset-inline-start: 0;
+				width: 0;
+				height: 2px;
+				background-color: var(--tj-color-theme-primary);
+				transition: width 0.35s ease;
+				border-radius: 2px;
+			}
+		}
+
+		&:hover > a,
+		&.current-menu-item > a,
+		&.current-menu-ancestor > a {
+			letter-spacing: 0.02em;
+
+			&::before {
+				width: 100%;
+			}
+		}
+	}
+
+	.site-logo .logo {
+		transition: transform 0.3s ease, opacity 0.3s ease;
+		&:hover {
+			transform: scale(1.05);
+			opacity: 0.85;
+		}
+	}
+
+	.menu_btn {
+		transition: color 0.3s ease, gap 0.3s ease;
+		&:hover {
+			gap: 14px;
+			color: var(--tj-color-theme-primary);
+		}
+	}
+}
+
 /* !END: Header CSS */
