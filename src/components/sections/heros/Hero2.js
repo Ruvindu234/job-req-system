@@ -27,7 +27,7 @@ const Hero2 = () => {
 	}
 
 	return (
-		<section className="tj-hero-slider style-1">
+		<section className="tj-hero-slider style-1 hero-2">
 			<Swiper
 				speed={2000}
 				loop={true}
@@ -48,23 +48,16 @@ const Hero2 = () => {
 				onSlideChange={swiper => updateDashWidth(swiper)}
 				className="full-slider-active"
 			>
-				{heroSlides.map(({ img, title, subtitle }, idx) => (
+				{heroSlides.map(({ img }, idx) => (
 					<SwiperSlide key={idx}>
 						<section
 							className="tj-slider-section"
-							style={{ backgroundImage: `url(${img})` }}
+							style={{ backgroundImage: `linear-gradient(rgba(5, 18, 31, 0.3), rgba(5, 18, 31, 0.1)), url(${img})`, minHeight: "100vh" }}
 						>
 							<div className="container">
 								<div className="row">
 									<div className="slider-wrapper">
 										<div className="slider-content">
-											<span className="sub-title">{subtitle}</span>
-											<h1 className="slider-title" style={{ fontSize: "54px" }}>{title}</h1>
-											<ButtonPrimary
-												text={"Free consultation"}
-												url={"/contact"}
-												className={"slider-button"}
-											/>
 										</div>
 									</div>
 								</div>
