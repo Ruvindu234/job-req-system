@@ -1,7 +1,7 @@
 import Footer2 from "@/components/layout/footer/Footer2";
 import Header from "@/components/layout/header/Header";
 import ResourcesPageHeader from "@/components/sections/resources/ResourcesPageHeader";
-import Video from "@/components/sections/videos/Video";
+import VideoGrid from "@/components/sections/videos/VideoGrid";
 import Services5 from "@/components/sections/services/Services5";
 import Faq2 from "@/components/sections/faq/Faq2";
 import Cta1 from "@/components/sections/cta/Cta1";
@@ -16,7 +16,7 @@ export default function ResourcesPage() {
 			<main>
 				<ResourcesPageHeader />
 				<Faq2 />
-				<Video />
+				<VideoGrid />
 				<Services5 />
 				<Cta1 />
 			</main>
