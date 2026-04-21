@@ -1,20 +1,20 @@
 import Footer2 from "@/components/layout/footer/Footer2";
 import Header from "@/components/layout/header/Header";
-import Contact1 from "@/components/sections/contacts/Contact1";
+import EmployersPageHeader from "@/components/sections/employers/EmployersPageHeader";
+import EmployerContent from "@/components/sections/employers/EmployerContent";
 import Cta1 from "@/components/sections/cta/Cta1";
-import Hero2 from "@/components/sections/heros/Hero2";
 import TjMagicCursor from "@/components/shared/others/TjMagicCursor";
 import ClientWrapper from "@/components/shared/wrappers/ClientWrapper";
 
-export default function Home2() {
+export default function EmployersPage() {
 	return (
 		<div>
 			<Header headerType={2} />
 			<Header isStickyHeader={true} headerType={2} />
 			<main>
-				<Hero2 />
-				<Contact1 />
-				<Cta1 />
+				<EmployersPageHeader />
+				<EmployerContent />
+<Cta1 />
 			</main>
 			<Footer2 />
 			<ClientWrapper />

@@ -1,19 +1,19 @@
 import Footer2 from "@/components/layout/footer/Footer2";
 import Header from "@/components/layout/header/Header";
-import Contact1 from "@/components/sections/contacts/Contact1";
+import JobSeekersPageHeader from "@/components/sections/job-seekers/JobSeekersPageHeader";
+import JobSeekersContent from "@/components/sections/job-seekers/JobSeekersContent";
 import Cta1 from "@/components/sections/cta/Cta1";
-import Hero2 from "@/components/sections/heros/Hero2";
 import TjMagicCursor from "@/components/shared/others/TjMagicCursor";
 import ClientWrapper from "@/components/shared/wrappers/ClientWrapper";
 
-export default function Home2() {
+export default function JobSeekersPage() {
 	return (
 		<div>
 			<Header headerType={2} />
 			<Header isStickyHeader={true} headerType={2} />
 			<main>
-				<Hero2 />
-				<Contact1 />
+				<JobSeekersPageHeader />
+				<JobSeekersContent />
 				<Cta1 />
 			</main>
 			<Footer2 />

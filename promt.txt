@@ -1,0 +1,29 @@
+$- now explain Hero2 slides ui section
+$- compare with current page and update it
+pagination
+apper
+
+
+go to this folder and analyze this page
+E:\Job-req\job-req-system - Copy\home-05 
+E:\Job-req\job-req-system - Copy\home-10
+explain this UI section  
+
+Blog Title
+
+add page header for http://localhost:3001/resources like http://localhost:3001/our-sectors
+and add Video
+
+  Full-width parallax video banner
+  - Background image with parallax scroll effect
+  - Centered play button that opens a YouTube popup (glightbox)
+  - Links to: https://www.youtube.com/watch?v=MLpWrANjFbI
+
+  from E:\Job-req\job-req-system - Copy\home-10
+
+  The page order at /resources is now:
+  ResourcesPageHeader
+  Faq2
+  Video
+  Services5          ← new
+  Cta1

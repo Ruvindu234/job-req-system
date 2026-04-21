@@ -28,6 +28,7 @@
 		"react-range-slider-input": "^3.2.1",
 		"sweetalert2": "^11.22.5",
 		"swiper": "^11.2.10",
+		"three": "^0.183.2",
 		"venobox": "^2.1.8",
 		"wow.js": "^1.2.2"
 	},

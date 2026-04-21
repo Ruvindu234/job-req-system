@@ -1,9 +1,12 @@
+"use client";
+
 import ButtonPrimary from "@/components/shared/buttons/ButtonPrimary";
 import Link from "next/link";
 
-const Contact1 = () => {
+const EmployerEnquiry = () => {
 	return (
 		<section
+			id="employer-enquiry"
 			className="tj-contact-section"
 			style={{ backgroundImage: "url('/images/shapes/contact-bg.png')" }}
 		>
@@ -11,25 +14,51 @@ const Contact1 = () => {
 				<div className="row">
 					<div className="col-12">
 						<div className="contact-wrapper">
+
+							{/* ── Left: Info ── */}
 							<div className="contact-left-content">
 								<div className="sec-heading style-2">
 									<span
 										className="sub-title wow fadeInUp"
 										data-wow-delay="0.1s"
 									>
-										// Meet our team
+										// Get in Touch
 									</span>
-									<h2 className="sec-title text-anim">
-										Let’s discuss further to get better results
+									<h2 className="sec-title text-anim" style={{ fontSize: "36px" }}>
+										We're Ready When You Are.
 									</h2>
-									<div className="desc wow fadeInUp" data-wow-delay="0.3s">
+									<div
+										className="desc wow fadeInUp"
+										data-wow-delay="0.3s"
+									>
 										<p>
-											Our mission is to empowers businesses off our all size too
-											thrive in an businesses ever changing marketplaces. In
-											today's dynamicis business environment, the key to success
-											lies.
+											Whether you need overseas or local talent, our team
+											is ready to assist. Fill in the form and we&rsquo;ll
+											be in touch shortly.
 										</p>
 									</div>
+
+									{/* ── Contact Info ── */}
+									<div
+										className="employer-contact-info wow fadeInUp"
+										data-wow-delay="0.4s"
+									>
+										<div className="contact-text">
+											<i className="fa-solid fa-phone"></i>
+											<Link href="tel:+61298995868">+61 2989 95868</Link>
+										</div>
+										<div className="contact-text">
+											<i className="fa-solid fa-envelope"></i>
+											<Link href="mailto:contact@auz-connect.com.au">
+												contact@auz-connect.com.au
+											</Link>
+										</div>
+										<div className="contact-text">
+											<i className="fa-sharp fa-solid fa-location-dot"></i>
+											Suite 7.01, 12 Century Circuit, Baulkham Hills, NSW 2153
+										</div>
+									</div>
+
 									<div
 										className="contact-button wow fadeInUp"
 										data-wow-delay="0.5s"
@@ -42,35 +71,23 @@ const Contact1 = () => {
 									</div>
 								</div>
 							</div>
+
+							{/* ── Right: Form ── */}
 							<div
 								className="contact-form-one wow fadeInUp"
 								data-wow-delay="0.1s"
 							>
-								<h3 className="title">
-									Feel free to get in touch or visit our location.
-								</h3>
-								<div className="contact-item">
-									<div className="contact-text">
-										<i className="fa-solid fa-envelope"></i>
-										<Link href="mailto:support@solvior.com">
-											support@solvior.com
-										</Link>
-									</div>
-									<div className="contact-text">
-										<i className="fa-sharp fa-solid fa-location-dot"></i>
-										Elviraton, CA 48998
-									</div>
-								</div>
+								<h3 className="title">Feel free to get in touch with us.</h3>
+
 								<form>
 									<div className="row">
 										<div className="col-sm-6">
 											<div className="form-input">
 												<input
 													type="text"
-													id="first"
 													name="name"
-													placeholder="Full name*"
-													required=""
+													placeholder="Full Name*"
+													required
 												/>
 											</div>
 										</div>
@@ -78,10 +95,9 @@ const Contact1 = () => {
 											<div className="form-input">
 												<input
 													type="email"
-													id="emailOne"
 													name="email"
-													placeholder="Email address*"
-													required=""
+													placeholder="Email Address*"
+													required
 												/>
 											</div>
 										</div>
@@ -89,38 +105,32 @@ const Contact1 = () => {
 											<div className="form-input">
 												<input
 													type="tel"
-													id="tel"
-													name="tel"
-													placeholder="Phone number*"
-													required=""
+													name="phone"
+													placeholder="Contact Number*"
+													required
 												/>
 											</div>
 										</div>
 										<div className="col-sm-6">
 											<div className="form-input">
-												<select name="service" id="service">
-													<option value="">Choose a option</option>
-													<option value="it-consulting">IT consulting</option>
-													<option value="market-research">Market research</option>
-													<option value="business-process">Business process</option>
-													<option value="business-consultancy">Business consultancy</option>
-													<option value="digital-marketing">Digital marketing</option>
-													<option value="branding-design">Branding design</option>
-												</select>
+												<input
+													type="file"
+													name="file"
+													accept=".pdf,.doc,.docx"
+												/>
 											</div>
 										</div>
 										<div className="col-12">
 											<div className="form-input input-textarea">
 												<textarea
-													id="message"
 													name="message"
-													placeholder="Type message"
+													placeholder="Type your message*"
 												/>
 											</div>
 										</div>
 										<div className="submit-button">
 											<ButtonPrimary
-												text={"Send message"}
+												text={"Send Enquiry"}
 												type="submit"
 												className={"white-btn"}
 											/>
@@ -128,6 +138,7 @@ const Contact1 = () => {
 									</div>
 								</form>
 							</div>
+
 						</div>
 					</div>
 				</div>
@@ -136,4 +147,4 @@ const Contact1 = () => {
 	);
 };
 
-export default Contact1;
+export default EmployerEnquiry;

@@ -41,8 +41,8 @@ const About2 = () => {
 									>
 										// Number #1 solver agency
 									</span>
-									<h2 className="sec-title text-anim">
-										Empowering your business vision
+									<h2 className="sec-title text-anim" style={{ fontSize: "36px" }}>
+										Recruitment Built Around You.
 									</h2>
 									<div className="desc wow fadeInUp" data-wow-delay="0.3s">
 										<p>
