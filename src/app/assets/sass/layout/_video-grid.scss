@@ -2,6 +2,15 @@
 
 /* !START: Video Grid CSS */
 .tj-video-grid-section {
+	padding-bottom: 60px !important;
+
+	@media #{$lg} {
+		padding-bottom: 50px !important;
+	}
+
+	@media #{$md, $sm, $xs} {
+		padding-bottom: 40px !important;
+	}
 	.mb-50 {
 		margin-bottom: 50px;
 	}
