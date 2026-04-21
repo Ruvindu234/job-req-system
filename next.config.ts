@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
 	output: "export",
+	basePath: "/job-req-system",
 	images: {
 		unoptimized: true,
 	},
