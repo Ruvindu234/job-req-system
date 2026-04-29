@@ -53,7 +53,7 @@ const Hero2 = () => {
 					<SwiperSlide key={idx}>
 						<section
 							className="tj-slider-section"
-							style={{ backgroundImage: `linear-gradient(rgba(5, 18, 31, 0.3), rgba(5, 18, 31, 0.1)), url(${img})`, minHeight: "100vh" }}
+							style={{ backgroundImage: `linear-gradient(rgba(5, 18, 31, 0.3), rgba(5, 18, 31, 0.1)), url(${img})`, minHeight: "185vh" }}
 						>
 							<div className="container">
 								<div className="row">
