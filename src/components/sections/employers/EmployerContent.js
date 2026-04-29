@@ -1,6 +1,6 @@
 const EmployerContent = () => {
 	return (
-		<section className="tj-service-area section-space">
+		<section className="tj-service-area section-space" style={{ paddingTop: "40px" }}>
 			<div className="container">
 				<div className="row">
 					<div className="col-12">

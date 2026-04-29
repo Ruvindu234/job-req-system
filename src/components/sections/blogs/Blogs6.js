@@ -41,7 +41,7 @@ const sectors = [
 
 const Blogs6 = () => {
 	return (
-		<section className="h6-blog-section section-space">
+		<section className="h6-blog-section section-space" style={{ paddingTop: "40px" }}>
 			<div className="container">
 				<div className="row">
 					<div className="col-12">

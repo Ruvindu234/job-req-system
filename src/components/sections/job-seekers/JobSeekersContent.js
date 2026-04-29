@@ -3,7 +3,7 @@ import BootstrapWrapper from "@/components/shared/wrappers/BootstrapWrapper";
 
 const JobSeekersContent = () => {
 	return (
-		<section className="tj-product-area section-space">
+		<section className="tj-product-area section-space" style={{ paddingTop: "40px" }}>
 			<div className="container">
 				<div className="row">
 					<div className="col-12">
