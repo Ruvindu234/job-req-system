@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 
-const Logo = ({ headerType, isStickyHeader }) => {
+const Logo = ({ headerType, isStickyHeader, isLightHeader }) => {
+	const talentColor = isLightHeader ? "var(--tj-color-heading-primary)" : "var(--tj-color-common-white)";
 	return (
 		<div className="site-logo">
 			<Link
@@ -30,8 +31,9 @@ const Logo = ({ headerType, isStickyHeader }) => {
 						fontSize: "22px",
 						fontWeight: "700",
 						letterSpacing: "-0.5px",
-						color: "var(--tj-color-common-white)",
+						color: talentColor,
 						fontFamily: "var(--tj-ff-heading)",
+						transition: "color 0.3s ease",
 					}}
 				>
 					Talent

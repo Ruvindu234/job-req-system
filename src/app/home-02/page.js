@@ -9,7 +9,7 @@ import ClientWrapper from "@/components/shared/wrappers/ClientWrapper";
 export default function Home2() {
 	return (
 		<div>
-			<Header headerType={2} />
+			<Header headerType={2} customHeaderClass="header-home2" isLightHeader={true} />
 			<Header isStickyHeader={true} headerType={2} />
 			<main>
 				<Hero2 />

@@ -11,7 +11,7 @@ import Logo from "./Logo";
 import MobileMenu from "./MobileMenu";
 import Navbar from "./Navbar";
 
-const Header = ({ headerType, isHeaderTop, topbarType, isStickyHeader }) => {
+const Header = ({ headerType, isHeaderTop, topbarType, isStickyHeader, customHeaderClass, isLightHeader }) => {
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 	const [isSearchOpen, setIsSearchOpen] = useState(false);
 	const isSticky = useIsSticky(isStickyHeader);
@@ -48,7 +48,7 @@ const Header = ({ headerType, isHeaderTop, topbarType, isStickyHeader }) => {
 						: headerType === 9
 						? ""
 						: "header-absolute"
-				}`}
+				} ${customHeaderClass || ""}`}
 			>
 				{isHeaderTop ? <HeaderTop type={topbarType} /> : ""}
 				<div className="header-bottom">
@@ -60,6 +60,7 @@ const Header = ({ headerType, isHeaderTop, topbarType, isStickyHeader }) => {
 									<Logo
 										isStickyHeader={isStickyHeader}
 										headerType={headerType}
+										isLightHeader={isLightHeader}
 									/>
 
 									{/* <!-- main navigation --> */}
