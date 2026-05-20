@@ -9,7 +9,7 @@ const ButtonMenuToggler = ({
 			{type ? (
 				<button
 					className={`menu_btn ${isMobile ? "d-lg-none" : ""}`}
-					onClick={() => handleMobileToggler(true)}
+					onMouseEnter={() => handleMobileToggler(true)}
 				>
 					<span className="line">
 						<span></span>
@@ -26,7 +26,7 @@ const ButtonMenuToggler = ({
 							? "d-none d-xl-inline-flex"
 							: ""
 					}`}
-					onClick={() => handleMobileToggler(true)}
+					onMouseEnter={() => handleMobileToggler(true)}
 				>
 					Menu
 					<span className="cubes">
