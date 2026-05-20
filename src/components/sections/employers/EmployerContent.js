@@ -9,14 +9,14 @@ const EmployerContent = () => {
 
 								{/* titleLarge */}
 								<h3 className="sec-title text-anim" style={{ fontSize: "24px" }}>
-									Hire Smarter, Grow Faster.
+									Recruitment is a time-consuming and complicated process.
 								</h3>
 
 								<div className="tj-entry-content">
 
 									{/* Intro */}
 									<p className="wow fadeInUp" data-wow-delay="0.1s">
-										No time to search but need to find talent? <strong>We are here to make your worries disappear!</strong>
+										No time to search but need to find talents? <strong>We to make your worries disappear!</strong>
 									</p>
 									<p className="wow fadeInUp" data-wow-delay="0.2s">
 										Skills In Motion offers integrated recruitment solutions to
@@ -43,7 +43,7 @@ const EmployerContent = () => {
 										</li>
 										<li style={{ display: "flex", gap: "8px", marginBottom: "12px" }}>
 											<i className="tji-double-check" style={{ fontSize: "18px", color: "var(--tj-color-theme-primary)", marginTop: "3px", flexShrink: 0 }}></i>
-											<span style={{ fontFamily: "var(--tj-ff-heading)", fontWeight: 600, color: "var(--tj-color-heading-primary)" }}>Flexibility to use your company&apos;s migration agent. If you are new or wish to change your migration agent, we can recommend trusted professionals who provide money-back guarantees and high-quality services to both applicants and companies.</span>
+											<span style={{ fontFamily: "var(--tj-ff-heading)", fontWeight: 600, color: "var(--tj-color-heading-primary)" }}>Flexibility use company migration agent. If you are new or wants to have a new migration agent, we will recommend those who will provide money back guarantees and superior services to both applicant and company alike.</span>
 										</li>
 									</ul>
 
