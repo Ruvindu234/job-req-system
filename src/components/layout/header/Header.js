@@ -4,7 +4,7 @@ import ButtonMenuToggler from "@/components/shared/buttons/ButtonMenuToggler";
 import ButtonPrimary from "@/components/shared/buttons/ButtonPrimary";
 import ButtonSearch from "@/components/shared/buttons/ButtonSearch";
 import useIsSticky from "@/hooks/useIsSticky";
-import { Fragment, useCallback, useState } from "react";
+import { Fragment, useCallback, useRef, useState } from "react";
 import HeaderSearchForm from "./HeaderSearchForm";
 import HeaderTop from "./HeaderTop";
 import Logo from "./Logo";
@@ -15,11 +15,19 @@ const Header = ({ headerType, isHeaderTop, topbarType, isStickyHeader, customHea
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 	const [isSearchOpen, setIsSearchOpen] = useState(false);
 	const isSticky = useIsSticky(isStickyHeader);
+	const closeTimer = useRef(null);
 	const handleSearchToggler = useCallback(currentState => {
 		setIsSearchOpen(currentState);
 	}, []);
 	const handleMobileToggler = useCallback(currentState => {
 		setIsMobileMenuOpen(currentState);
+	}, []);
+	const handleMenuMouseEnter = useCallback(() => {
+		if (closeTimer.current) clearTimeout(closeTimer.current);
+		setIsMobileMenuOpen(true);
+	}, []);
+	const handleMenuMouseLeave = useCallback(() => {
+		closeTimer.current = setTimeout(() => setIsMobileMenuOpen(false), 300);
 	}, []);
 	return (
 		<Fragment>
@@ -86,6 +94,8 @@ const Header = ({ headerType, isHeaderTop, topbarType, isStickyHeader, customHea
 											<ButtonMenuToggler
 												headerType={headerType}
 												handleMobileToggler={handleMobileToggler}
+												onMenuMouseEnter={handleMenuMouseEnter}
+												onMenuMouseLeave={handleMenuMouseLeave}
 											/>
 										) : (
 											""
@@ -117,6 +127,8 @@ const Header = ({ headerType, isHeaderTop, topbarType, isStickyHeader, customHea
 												headerType={headerType}
 												type={2}
 												handleMobileToggler={handleMobileToggler}
+												onMenuMouseEnter={handleMenuMouseEnter}
+												onMenuMouseLeave={handleMenuMouseLeave}
 											/>
 										) : (
 											""
@@ -129,6 +141,8 @@ const Header = ({ headerType, isHeaderTop, topbarType, isStickyHeader, customHea
 										isMobile={true}
 										type={headerType === 7 || headerType === 10 ? 2 : 0}
 										handleMobileToggler={handleMobileToggler}
+										onMenuMouseEnter={handleMenuMouseEnter}
+										onMenuMouseLeave={handleMenuMouseLeave}
 									/>
 								</div>
 							</div>
@@ -141,6 +155,8 @@ const Header = ({ headerType, isHeaderTop, topbarType, isStickyHeader, customHea
 			<MobileMenu
 				isMobileMenuOpen={isMobileMenuOpen}
 				handleMobileToggler={handleMobileToggler}
+				onMenuMouseEnter={handleMenuMouseEnter}
+				onMenuMouseLeave={handleMenuMouseLeave}
 			/>
 
 			{/* Search Overlay */}

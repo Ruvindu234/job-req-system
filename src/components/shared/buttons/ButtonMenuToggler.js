@@ -3,13 +3,16 @@ const ButtonMenuToggler = ({
 	type,
 	headerType,
 	handleMobileToggler,
+	onMenuMouseEnter,
+	onMenuMouseLeave,
 }) => {
 	return (
 		<>
 			{type ? (
 				<button
 					className={`menu_btn ${isMobile ? "d-lg-none" : ""}`}
-					onMouseEnter={() => handleMobileToggler(true)}
+					onMouseEnter={onMenuMouseEnter}
+					onMouseLeave={onMenuMouseLeave}
 				>
 					<span className="line">
 						<span></span>
@@ -26,7 +29,8 @@ const ButtonMenuToggler = ({
 							? "d-none d-xl-inline-flex"
 							: ""
 					}`}
-					onMouseEnter={() => handleMobileToggler(true)}
+					onMouseEnter={onMenuMouseEnter}
+					onMouseLeave={onMenuMouseLeave}
 				>
 					Menu
 					<span className="cubes">

@@ -3,18 +3,14 @@ import Link from "next/link";
 import { Fragment } from "react";
 import MobileNavbar from "./MobileNavbar";
 
-const MobileMenu = ({ isMobileMenuOpen, handleMobileToggler }) => {
+const MobileMenu = ({ isMobileMenuOpen, handleMobileToggler, onMenuMouseEnter, onMenuMouseLeave }) => {
 	return (
 		<Fragment>
 			<div
-				className={`body-overlay${isMobileMenuOpen ? " opened" : ""}`}
-				onClick={() => handleMobileToggler(false)}
-				data-lenis-prevent
-			></div>
-			<div
 				className={`hamburger-area ${isMobileMenuOpen ? " opened" : ""}`}
 				data-lenis-prevent
-				onMouseLeave={() => handleMobileToggler(false)}
+				onMouseEnter={onMenuMouseEnter}
+				onMouseLeave={onMenuMouseLeave}
 			>
 				<div className="hamburger_bg"></div>
 				<div className="hamburger_wrapper">
