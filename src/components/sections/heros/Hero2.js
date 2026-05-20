@@ -66,6 +66,7 @@ const Hero2 = () => {
 									objectFit: "contain",
 									objectPosition: "center",
 									zIndex: 0,
+									transform: "scale(1.15)",
 								}}
 							/>
 							<div className="container" style={{ position: "relative", zIndex: 2 }}>
