@@ -40,6 +40,10 @@
 		padding: 30px 15px 60px 15px;
 		overflow: auto;
 		height: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
 
 		@media #{$xs} {
 			padding: 25px 12px 50px 12px;
@@ -237,8 +241,8 @@
 		list-style: none;
 		display: flex;
 		flex-direction: column;
-		align-items: flex-start;
-		gap: 12px;
+		align-items: center;
+		gap: 20px;
 		padding-top: 20px;
 		border-top: 1px solid rgba(255, 255, 255, 0.1);
 		li {
