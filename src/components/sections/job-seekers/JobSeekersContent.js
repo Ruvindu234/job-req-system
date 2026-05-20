@@ -35,7 +35,7 @@ const JobSeekersContent = () => {
 											you for interviews and assist with any potential
 											visa applications if required.
 										</p>
-										<p>
+										<p style={{ color: "#e67e22", fontWeight: 600 }}>
 											We do not charge fees for our services to
 											candidates. Recruitment support is a free service
 											for all applicants.
