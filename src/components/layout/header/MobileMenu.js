@@ -70,45 +70,7 @@ const MobileMenu = ({ isMobileMenuOpen, handleMobileToggler }) => {
 							</button>
 						</div>
 					</div>
-					<div className="hamburger_search">
-						<form method="get" action="#0">
-							<button type="submit">
-								<i className="fal fa-search"></i>
-							</button>
-							<input
-								type="search"
-								autoComplete="off"
-								name="s"
-								placeholder="Search here"
-							/>
-						</form>
-					</div>
 					<MobileNavbar />
-					<div className="hamburger-infos">
-						<h4 className="hamburger-title">Contact info</h4>
-						<div className="contact-info">
-							<div className="contact_item">
-								<span className="subtitle">Email</span>
-								<div className="text">
-									<Link className="link" href="mailto:support@solvior.com">
-										support@solvior.com
-									</Link>
-								</div>
-							</div>
-							<div className="contact_item">
-								<span className="subtitle">Phone</span>
-								<div className="text">
-									<Link className="link" href="tel:000123456789">
-										(000) 123 456 789
-									</Link>
-								</div>
-							</div>
-							<div className="contact_item">
-								<span className="subtitle">Location</span>
-								<div className="text">Santa, United State</div>
-							</div>
-						</div>
-					</div>
 					<div className="hamburger-socials">
 						<h4 className="hamburger-title">Follow us</h4>
 						<ul>
