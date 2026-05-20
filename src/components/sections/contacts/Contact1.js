@@ -14,21 +14,13 @@ const Contact1 = () => {
 						<div className="contact-wrapper">
 							<div className="contact-left-content">
 								<div className="sec-heading style-2">
-									<span
-										className="sub-title wow fadeInUp"
-										data-wow-delay="0.1s"
-									>
-										// Meet our team
-									</span>
 									<h2 className="sec-title text-anim">
-										Let’s discuss further to get better results
+										We find the right people for the right jobs!
 									</h2>
 									<div className="desc wow fadeInUp" data-wow-delay="0.3s">
 										<p>
-											Our mission is to empowers businesses off our all size too
-											thrive in an businesses ever changing marketplaces. In
-											today's dynamicis business environment, the key to success
-											lies.
+											We have ready to place Skilled Trade Staff in Automotive,
+											Engineering, Construction and Hospitality sectors among other.
 										</p>
 									</div>
 									<div
@@ -36,7 +28,7 @@ const Contact1 = () => {
 										data-wow-delay="0.5s"
 									>
 										<ButtonPrimary
-											text={"Contact us"}
+											text={"Let's discuss this further"}
 											url={"/contact"}
 											className={"white-btn"}
 										/>
