@@ -2,7 +2,7 @@
 
 const Services8 = () => {
 	return (
-		<section className="h8-services-section section-space">
+		<section className="h8-services-section section-space" style={{ padding: "60px 0" }}>
 			<div className="container">
 				<div className="row">
 					<div className="col">
