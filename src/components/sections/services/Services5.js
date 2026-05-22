@@ -5,8 +5,8 @@ import { useState } from "react";
 
 const resources = [
 	{ id: 1, title: "Your Interview Toolkit", iconName: "tji-optimization", link: "/resources/interview-guide" },
-	{ id: 2, title: "Information sheet Skills Assessment", iconName: "tji-strategic" },
-	{ id: 3, title: "Information sheet Subclass 482 Working Visa", iconName: "tji-business" },
+	{ id: 2, title: "Information sheet Skills Assessment", iconName: "tji-strategic", link: "/resources/skills-assessment" },
+	{ id: 3, title: "Information sheet Subclass 482 Working Visa", iconName: "tji-business", link: "/resources/subclass-482-visa" },
 ];
 
 const Services5 = () => {
