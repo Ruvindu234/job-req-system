@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 const Logo = ({ headerType, isStickyHeader, isLightHeader }) => {
-	const talentColor = isLightHeader ? "var(--tj-color-heading-primary)" : "var(--tj-color-common-white)";
 	return (
 		<div className="site-logo">
 			<Link
@@ -12,7 +12,6 @@ const Logo = ({ headerType, isStickyHeader, isLightHeader }) => {
 				style={{
 					display: "inline-flex",
 					alignItems: "center",
-					gap: "2px",
 					textDecoration: "none",
 					transition: "transform 0.3s ease, filter 0.3s ease",
 				}}
@@ -26,29 +25,14 @@ const Logo = ({ headerType, isStickyHeader, isLightHeader }) => {
 					e.currentTarget.style.filter = "none";
 				}}
 			>
-				<span
-					style={{
-						fontSize: "22px",
-						fontWeight: "700",
-						letterSpacing: "-0.5px",
-						color: talentColor,
-						fontFamily: "var(--tj-ff-heading)",
-						transition: "color 0.3s ease",
-					}}
-				>
-					Talent
-				</span>
-				<span
-					style={{
-						fontSize: "22px",
-						fontWeight: "700",
-						letterSpacing: "-0.5px",
-						color: "var(--tj-color-theme-primary)",
-						fontFamily: "var(--tj-ff-heading)",
-					}}
-				>
-					Bridge
-				</span>
+				<Image
+					src="/logo.jpeg"
+					alt="Logo"
+					width={160}
+					height={50}
+					style={{ objectFit: "contain" }}
+					priority
+				/>
 			</Link>
 		</div>
 	);
