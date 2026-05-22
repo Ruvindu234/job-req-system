@@ -50,13 +50,9 @@ const Footer2 = () => {
 									<h4 className="title">Our offices</h4>
 								</div>
 								<div className="infos-item">
-									<span>Headquarters - USA</span>
-									<p>993 Renner Burg, West Rond, MT 94251-030</p>
-									<Link href="tel:1009544-7818">+1 (009) 544-7818</Link>
-								</div>
-								<div className="infos-item">
-									<span>Operations - Canada</span>
-									<p>Suite 452 8082 Boner Parge, Elviraton, CA 48998</p>
+									<span>Headquarters - Australia</span>
+									<p>Level 5, 123 Pitt Street, Sydney NSW 2000</p>
+									<Link href="tel:+61290000000">+61 2 9000 0000</Link>
 								</div>
 							</div>
 						</div>
@@ -124,10 +120,10 @@ const Footer2 = () => {
 								<div className="copyright-content-area">
 									<div className="copyright-text">
 										<p>
-											© 2025{" "}
+											© 2026{" "}
 											<Link href="/" target="_blank">
 												{" "}
-												TalentBridge{" "}
+												Skills In Motion{" "}
 											</Link>{" "}
 											All right reserved.
 										</p>
