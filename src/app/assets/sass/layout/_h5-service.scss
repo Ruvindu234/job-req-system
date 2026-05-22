@@ -125,9 +125,12 @@
 			.title {
 				writing-mode: sideways-lr;
 				margin-bottom: 0;
+				font-size: 21px;
+				line-height: 1.3;
 
 				@media #{$md, $sm, $xs} {
 					writing-mode: inherit;
+					font-size: 24px;
 				}
 			}
 			@media #{$md, $sm, $xs} {
