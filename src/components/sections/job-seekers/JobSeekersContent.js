@@ -3,7 +3,7 @@ import BootstrapWrapper from "@/components/shared/wrappers/BootstrapWrapper";
 
 const JobSeekersContent = () => {
 	return (
-		<section className="tj-product-area section-space">
+		<section className="tj-product-area section-space" style={{ paddingTop: "40px" }}>
 			<div className="container">
 				<div className="row">
 					<div className="col-12">
@@ -35,7 +35,7 @@ const JobSeekersContent = () => {
 											you for interviews and assist with any potential
 											visa applications if required.
 										</p>
-										<p>
+										<p style={{ color: "#e67e22", fontWeight: 600 }}>
 											We do not charge fees for our services to
 											candidates. Recruitment support is a free service
 											for all applicants.

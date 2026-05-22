@@ -1,3 +1,4 @@
+import { assetUrl } from "@/libs/assetUrl";
 import BlogCard6 from "@/components/shared/cards/BlogCard6";
 
 const sectors = [
@@ -40,7 +41,7 @@ const sectors = [
 
 const Blogs6 = () => {
 	return (
-		<section className="h6-blog-section section-space">
+		<section className="h6-blog-section section-space" style={{ paddingTop: "40px" }}>
 			<div className="container">
 				<div className="row">
 					<div className="col-12">
@@ -73,7 +74,7 @@ const Blogs6 = () => {
 				</div>
 			</div>
 			<div className="h6-blog-shape move-anim">
-				<img src="/images/shapes/h4-hero-shape-1.svg" alt="img" />
+				<img src={assetUrl("/images/shapes/h4-hero-shape-1.svg")} alt="img" />
 			</div>
 		</section>
 	);

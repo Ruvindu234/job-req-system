@@ -1,5 +1,5 @@
+import { assetUrl } from "@/libs/assetUrl";
 import ButtonPrimary from "@/components/shared/buttons/ButtonPrimary";
-import Image from "next/image";
 
 const Cta1 = () => {
 	return (
@@ -23,18 +23,18 @@ const Cta1 = () => {
 				</div>
 			</div>
 
-			<Image
+			<img
 				className="cta-shape-1"
-				src="/images/shapes/cta-shapes-1.png"
-				alt="Shapes"
+				src={assetUrl("/images/shapes/cta-shapes-1.png")}
+				alt=""
 				width={207}
 				height={110}
 				style={{ height: "auto" }}
 			/>
-			<Image
+			<img
 				className="cta-shape-2"
-				src="/images/shapes/cta-shapes-2.png"
-				alt="Shapes"
+				src={assetUrl("/images/shapes/cta-shapes-2.png")}
+				alt=""
 				width={207}
 				height={110}
 				style={{ height: "auto" }}

@@ -1,7 +1,7 @@
 import { assetUrl } from "@/libs/assetUrl";
 import Link from "next/link";
 
-const OurSectorsPageHeader = () => {
+const TermsPageHeader = () => {
 	return (
 		<section
 			className="tj-page-header"
@@ -20,7 +20,7 @@ const OurSectorsPageHeader = () => {
 							className="tj-page-title wow fadeInDown"
 							data-wow-delay="0.2s"
 						>
-							Our Sectors
+							Terms &amp; Conditions
 						</h1>
 						<div
 							className="tj-page-link wow fadeInUp"
@@ -37,7 +37,7 @@ const OurSectorsPageHeader = () => {
 									style={{ fontSize: "11px" }}
 								></i>
 							</span>
-							<span>Our Sectors</span>
+							<span>Terms &amp; Conditions</span>
 						</div>
 					</div>
 				</div>
@@ -46,4 +46,4 @@ const OurSectorsPageHeader = () => {
 	);
 };
 
-export default OurSectorsPageHeader;
+export default TermsPageHeader;

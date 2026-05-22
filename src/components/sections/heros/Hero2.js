@@ -4,6 +4,7 @@ import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
+import { assetUrl } from "@/libs/assetUrl";
 import ButtonPrimary from "@/components/shared/buttons/ButtonPrimary";
 import Image from "next/image";
 
@@ -12,7 +13,7 @@ const Hero2 = () => {
 		{
 			subtitle: "number #1 solver agency",
 			title: "Find the Right Talent, Right Now.",
-			img: "/new_images/slider-new.jpeg",
+			img: assetUrl("/new_images/slider-new.jpeg"),
 		},
 	];
 
@@ -52,9 +53,23 @@ const Hero2 = () => {
 					<SwiperSlide key={idx}>
 						<section
 							className="tj-slider-section"
-							style={{ backgroundImage: `linear-gradient(rgba(5, 18, 31, 0.3), rgba(5, 18, 31, 0.1)), url(${img})`, minHeight: "100vh" }}
+							style={{ height: "100vh", backgroundImage: "none", backgroundColor: "#ffffff", position: "relative", overflow: "hidden" }}
 						>
-							<div className="container">
+							<img
+								src={img}
+								alt=""
+								style={{
+									position: "absolute",
+									inset: 0,
+									width: "100%",
+									height: "100%",
+									objectFit: "contain",
+									objectPosition: "center",
+									zIndex: 0,
+									transform: "scaleX(1.45) scaleY(1.20)",
+								}}
+							/>
+							<div className="container" style={{ position: "relative", zIndex: 2 }}>
 								<div className="row">
 									<div className="slider-wrapper">
 										<div className="slider-content">

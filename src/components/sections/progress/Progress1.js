@@ -1,3 +1,4 @@
+import { assetUrl } from "@/libs/assetUrl";
 import ProgressBar from "@/components/shared/progress/ProgressBar";
 import Image from "next/image";
 
@@ -7,7 +8,7 @@ const Progress1 = () => {
 			<div
 				className="progress-bg-images d-none d-lg-block"
 				style={{
-					backgroundImage: "url('/new_images/h2-progress-2.webp')",
+					backgroundImage: `url('${assetUrl("/new_images/h2-progress-2.webp")}')`,
 				}}
 			></div>
 			<div className="container">

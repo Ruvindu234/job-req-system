@@ -1,7 +1,7 @@
 import { assetUrl } from "@/libs/assetUrl";
 import Link from "next/link";
 
-const OurSectorsPageHeader = () => {
+const InterviewGuidePageHeader = () => {
 	return (
 		<section
 			className="tj-page-header"
@@ -14,13 +14,13 @@ const OurSectorsPageHeader = () => {
 							className="employer-page-badge wow fadeInDown"
 							data-wow-delay="0.1s"
 						>
-							// Recruitment &amp; Migration Solutions
+							// Skills in Motion
 						</span>
 						<h1
 							className="tj-page-title wow fadeInDown"
 							data-wow-delay="0.2s"
 						>
-							Our Sectors
+							Interview Guide
 						</h1>
 						<div
 							className="tj-page-link wow fadeInUp"
@@ -37,7 +37,18 @@ const OurSectorsPageHeader = () => {
 									style={{ fontSize: "11px" }}
 								></i>
 							</span>
-							<span>Our Sectors</span>
+							<span>
+								<Link href="/resources">
+									<span>Resources</span>
+								</Link>
+							</span>
+							<span>
+								<i
+									className="fas fa-chevron-right"
+									style={{ fontSize: "11px" }}
+								></i>
+							</span>
+							<span>Interview Guide</span>
 						</div>
 					</div>
 				</div>
@@ -46,4 +57,4 @@ const OurSectorsPageHeader = () => {
 	);
 };
 
-export default OurSectorsPageHeader;
+export default InterviewGuidePageHeader;

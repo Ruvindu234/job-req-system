@@ -1,5 +1,6 @@
 "use client";
 
+import { assetUrl } from "@/libs/assetUrl";
 import ButtonPrimary from "@/components/shared/buttons/ButtonPrimary";
 import Link from "next/link";
 
@@ -8,7 +9,7 @@ const EmployerEnquiry = () => {
 		<section
 			id="employer-enquiry"
 			className="tj-contact-section"
-			style={{ backgroundImage: "url('/images/shapes/contact-bg.png')" }}
+			style={{ backgroundImage: `url('${assetUrl("/images/shapes/contact-bg.png")}')` }}
 		>
 			<div className="container">
 				<div className="row">

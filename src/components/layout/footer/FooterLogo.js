@@ -1,15 +1,15 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 const FooterLogo = () => {
 	return (
 		<Link
 			href="/"
 			style={{
-				display: "inline-flex",
-				alignItems: "center",
-				gap: "2px",
+				display: "block",
+				width: "100%",
 				textDecoration: "none",
 				transition: "filter 0.3s ease",
 			}}
@@ -21,28 +21,14 @@ const FooterLogo = () => {
 				e.currentTarget.style.filter = "none";
 			}}
 		>
-			<span
-				style={{
-					fontSize: "22px",
-					fontWeight: "700",
-					letterSpacing: "-0.5px",
-					color: "var(--tj-color-common-white)",
-					fontFamily: "var(--tj-ff-heading)",
-				}}
-			>
-				Talent
-			</span>
-			<span
-				style={{
-					fontSize: "22px",
-					fontWeight: "700",
-					letterSpacing: "-0.5px",
-					color: "var(--tj-color-theme-primary)",
-					fontFamily: "var(--tj-ff-heading)",
-				}}
-			>
-				Bridge
-			</span>
+			<Image
+				src="/logo_footer.jpeg"
+				alt="Logo"
+				width={600}
+				height={220}
+				sizes="100vw"
+				style={{ width: "100%", height: "auto", objectFit: "contain" }}
+			/>
 		</Link>
 	);
 };

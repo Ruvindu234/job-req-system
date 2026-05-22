@@ -1,11 +1,16 @@
 "use client";
 import ButtonPrimary from "@/components/shared/buttons/ButtonPrimary";
 import ServiceCard5 from "@/components/shared/cards/ServiceCard5";
-import getALlServices from "@/libs/getALlServices";
 import { useState } from "react";
 
+const resources = [
+	{ id: 1, title: "Your Interview Toolkit", iconName: "tji-optimization", link: "/resources/interview-guide" },
+	{ id: 2, title: "Information sheet Skills Assessment", iconName: "tji-strategic", link: "/resources/skills-assessment" },
+	{ id: 3, title: "Information sheet Subclass 482 Working Visa", iconName: "tji-business", link: "/resources/subclass-482-visa" },
+];
+
 const Services5 = () => {
-	const services = getALlServices()?.slice(0, 6);
+	const services = resources;
 	const [currentIndex, setCurrentIndex] = useState(1);
 	const handleCurrentIndex = idx => {
 		setCurrentIndex(idx);

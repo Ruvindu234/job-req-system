@@ -37,6 +37,8 @@ jobs:
 
       - name: Build Next.js Site
         run: npm run build
+        env:
+          NEXT_PUBLIC_BASE_PATH: /job-req-system
 
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
@@ -44,6 +46,7 @@ jobs:
           path: './out'
 
   deploy:
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/V-3'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

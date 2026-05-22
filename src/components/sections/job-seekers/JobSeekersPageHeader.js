@@ -1,10 +1,11 @@
+import { assetUrl } from "@/libs/assetUrl";
 import Link from "next/link";
 
 const JobSeekersPageHeader = () => {
 	return (
 		<section
 			className="tj-page-header"
-			style={{ backgroundImage: "url('/new_images/pheader-bg.webp')" }}
+			style={{ backgroundImage: `url('${assetUrl("/new_images/pheader-bg.webp")}')` }}
 		>
 			<div className="container">
 				<div className="row">

@@ -7,8 +7,9 @@ const ServiceCard5 = ({
 	handleCurrentIndex,
 	currentIndex,
 }) => {
-	const { title, desc, id, totalProject, iconName, img, bgImg, svg } =
+	const { title, desc, id, totalProject, iconName, img, bgImg, svg, link } =
 		service || {};
+	const href = link || `/services/${id}`;
 	return (
 		<div
 			className={`service-style-5 ${currentIndex === idx ? "active" : ""}`}
@@ -25,7 +26,7 @@ const ServiceCard5 = ({
 				</div>
 				<div className="h5-service-content-inner">
 					<h4 className="title">
-						<Link href={`/services/${id}`}>{title}</Link>
+						<Link href={href}>{title}</Link>
 					</h4>
 					<div className="desc">
 						<p>
@@ -34,13 +35,13 @@ const ServiceCard5 = ({
 						</p>
 					</div>
 				</div>
-				<Link className="blog-btn-2" href={`/services/${id}`}>
+				<Link className="blog-btn-2" href={href}>
 					<span className="btn-icon">
 						<i className="fas fa-arrow-up-right"></i>
 					</span>
 					<span className="btn-text">Learn more</span>
 				</Link>
-				<Link className="blog-btn-2 mobile-show" href={`/services/${id}`}>
+				<Link className="blog-btn-2 mobile-show" href={href}>
 					<span className="btn-icon">
 						<i className="fas fa-arrow-up-right"></i>
 					</span>

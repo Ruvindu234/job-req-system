@@ -1,19 +1,24 @@
 import Footer2 from "@/components/layout/footer/Footer2";
 import Header from "@/components/layout/header/Header";
-import Contact1 from "@/components/sections/contacts/Contact1";
+import TermsPageHeader from "@/components/sections/terms/TermsPageHeader";
+import TermsContent from "@/components/sections/terms/TermsContent";
 import Cta1 from "@/components/sections/cta/Cta1";
-import Hero2 from "@/components/sections/heros/Hero2";
 import TjMagicCursor from "@/components/shared/others/TjMagicCursor";
 import ClientWrapper from "@/components/shared/wrappers/ClientWrapper";
 
-export default function Home2() {
+export const metadata = {
+	title: "Terms & Conditions | Skills In Motion",
+	description: "Read the Terms and Conditions for using Skills In Motion recruitment and migration services.",
+};
+
+export default function TermsAndConditionsPage() {
 	return (
 		<div>
-			<Header headerType={2} customHeaderClass="header-home2" isLightHeader={true} />
+			<Header headerType={2} />
 			<Header isStickyHeader={true} headerType={2} />
 			<main>
-				<Hero2 />
-				<Contact1 />
+				<TermsPageHeader />
+				<TermsContent />
 				<Cta1 />
 			</main>
 			<Footer2 />
