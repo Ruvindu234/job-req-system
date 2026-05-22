@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { assetUrl } from "@/libs/assetUrl";
 
 const Logo = ({ headerType, isStickyHeader, isLightHeader }) => {
 	return (
@@ -26,7 +27,7 @@ const Logo = ({ headerType, isStickyHeader, isLightHeader }) => {
 				}}
 			>
 				<Image
-					src="/new_images/logo.jpeg"
+					src={assetUrl("/new_images/logo.jpeg")}
 					alt="Logo"
 					width={160}
 					height={50}
