@@ -1,14 +1,39 @@
 "use client";
-import BootstrapWrapper from "@/components/shared/wrappers/BootstrapWrapper";
+import { useState } from "react";
 
 const JobSeekersContent = () => {
+	const [activeTab, setActiveTab] = useState("australian");
+
+	const tabBaseStyle = {
+		padding: "9px 22px",
+		fontSize: "14px",
+		fontWeight: 600,
+		fontFamily: "var(--tj-ff-heading)",
+		border: "2px solid var(--tj-color-theme-primary)",
+		borderRadius: "30px",
+		cursor: "pointer",
+		transition: "all 0.3s ease",
+		textAlign: "center",
+	};
+
+	const getTabStyle = (name) => ({
+		...tabBaseStyle,
+		backgroundColor:
+			activeTab === name ? "var(--tj-color-theme-primary)" : "transparent",
+		color:
+			activeTab === name
+				? "var(--tj-color-common-white)"
+				: "var(--tj-color-theme-primary)",
+		boxShadow:
+			activeTab === name ? "0 8px 20px rgba(0, 117, 255, 0.25)" : "none",
+	});
+
 	return (
 		<section className="tj-product-area section-space" style={{ paddingTop: "40px" }}>
 			<div className="container">
 				<div className="row">
 					<div className="col-12">
-						<BootstrapWrapper>
-							<div className="tj-product-details-bottom">
+						<div className="tj-product-details-bottom">
 								<div className="row">
 									<div className="col-xl-12">
 										{/* Overview — always visible */}
@@ -46,32 +71,30 @@ const JobSeekersContent = () => {
 									<div className="tj-product-details-tab-nav tj-tab">
 										<nav>
 											<div
-												className="nav nav-tabs p-relative tj-product-tab"
 												id="jobSeekersTab"
 												role="tablist"
+												style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}
 											>
 												<button
-													className="nav-link additional_information_tab active"
 													id="nav-tab-australian"
-													data-bs-toggle="tab"
-													data-bs-target="#nav-australian"
 													type="button"
 													role="tab"
 													aria-controls="nav-australian"
-													aria-selected="true"
+													aria-selected={activeTab === "australian"}
+													onClick={() => setActiveTab("australian")}
+													style={getTabStyle("australian")}
 												>
 													Australian Applicants
 												</button>
 												<button
-													className="nav-link reviews_tab"
 													id="nav-tab-overseas"
-													data-bs-toggle="tab"
-													data-bs-target="#nav-overseas"
 													type="button"
 													role="tab"
 													aria-controls="nav-overseas"
-													aria-selected="false"
-													tabIndex="-1"
+													aria-selected={activeTab === "overseas"}
+													tabIndex={activeTab === "overseas" ? 0 : -1}
+													onClick={() => setActiveTab("overseas")}
+													style={getTabStyle("overseas")}
 												>
 													Overseas Applicants
 												</button>
@@ -82,7 +105,7 @@ const JobSeekersContent = () => {
 
 											{/* Australian Applicants Tab */}
 											<div
-												className="tab-pane fade active show"
+												className={`tab-pane fade ${activeTab === "australian" ? "active show" : ""}`}
 												id="nav-australian"
 												role="tabpanel"
 												aria-labelledby="nav-tab-australian"
@@ -113,7 +136,7 @@ const JobSeekersContent = () => {
 
 											{/* Overseas Applicants Tab */}
 											<div
-												className="tab-pane fade"
+												className={`tab-pane fade ${activeTab === "overseas" ? "active show" : ""}`}
 												id="nav-overseas"
 												role="tabpanel"
 												aria-labelledby="nav-tab-overseas"
@@ -154,10 +177,9 @@ const JobSeekersContent = () => {
 									</div>
 								</div>
 							</div>
-						</BootstrapWrapper>
+						</div>
 					</div>
 				</div>
-			</div>
 		</section>
 	);
 };
