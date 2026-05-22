@@ -110,7 +110,14 @@ const JobSeekersContent = () => {
 												role="tabpanel"
 												aria-labelledby="nav-tab-australian"
 											>
-												<div className="tj-product-details-description mt-30">
+												<div
+													className="tj-product-details-description mt-30"
+													style={{
+														backgroundColor: "#eef4ff",
+														borderRadius: "12px",
+														padding: "28px 32px",
+													}}
+												>
 													<p>
 														We have employers waiting to hire you!
 													</p>
@@ -141,7 +148,14 @@ const JobSeekersContent = () => {
 												role="tabpanel"
 												aria-labelledby="nav-tab-overseas"
 											>
-												<div className="tj-product-details-description mt-30">
+												<div
+													className="tj-product-details-description mt-30"
+													style={{
+														backgroundColor: "#fff4ec",
+														borderRadius: "12px",
+														padding: "28px 32px",
+													}}
+												>
 													<p>
 														We are a leading recruitment firm that works with
 														potential employers, recruitment partners, and
