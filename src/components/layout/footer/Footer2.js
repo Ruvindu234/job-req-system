@@ -100,30 +100,30 @@ const Footer2 = () => {
 						<div className="col-xl-2 col-lg-3 col-md-6 col-sm-6">
 							<div className="footer-widget footer2-col-4 widget_nav_menu">
 								<div className="footer-title">
-									<h4 className="title">Services</h4>
+									<h4 className="title">Pages</h4>
 								</div>
 								<div className="widget-menu">
 									<ul>
 										<li>
-											<Link href="/services/1">Strategic planning</Link>
+											<Link href="/">Home</Link>
 										</li>
 										<li>
-											<Link href="/services/2">Market research</Link>
+											<Link href="/about-us">About Us</Link>
 										</li>
 										<li>
-											<Link href="/services/3">Business process</Link>
+											<Link href="/employers">Employers</Link>
 										</li>
 										<li>
-											<Link href="/services/4">Financial management</Link>
+											<Link href="/job-seekers">Job Seekers</Link>
 										</li>
 										<li>
-											<Link href="/services/5">Change management</Link>
+											<Link href="/our-sectors">Our Sectors</Link>
 										</li>
 										<li>
-											<Link href="/services/6">IT consulting</Link>
+											<Link href="/resources">Resources</Link>
 										</li>
 										<li>
-											<Link href="/services/1">Leadership </Link>
+											<Link href="/contact">Contact</Link>
 										</li>
 									</ul>
 								</div>
