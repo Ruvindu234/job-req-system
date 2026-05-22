@@ -18,8 +18,8 @@ import "./assets/css/odometer-theme-default.css";
 import "./assets/css/solvior-icons.css";
 import "./globals.scss";
 export const metadata = {
-	title: "Solvior - Business Consulting React NextJs Template",
-	description: "Solvior - Business Consulting React NextJs Template",
+	title: "Skills In Motion - Recruitment & Migration Solutions",
+	description: "Skills In Motion connects job seekers and employers with recruitment and migration solutions across Australia.",
 };
 
 const lato = Lato({

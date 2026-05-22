@@ -26,7 +26,7 @@ const Logo = ({ headerType, isStickyHeader, isLightHeader }) => {
 				}}
 			>
 				<Image
-					src="/logo.jpeg"
+					src="/new_images/logo.jpeg"
 					alt="Logo"
 					width={160}
 					height={50}

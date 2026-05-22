@@ -32,7 +32,7 @@ const ButtonMenuToggler = ({
 					onMouseEnter={onMenuMouseEnter}
 					onMouseLeave={onMenuMouseLeave}
 				>
-					Menu
+					Follow us
 					<span className="cubes">
 						<span></span>
 						<span></span>

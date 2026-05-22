@@ -44,86 +44,65 @@ const Footer2 = () => {
 								</div>
 							</div>
 						</div>
-						<div className="col-xl-4 col-lg-3 col-md-6 col-sm-6">
+						<div className="col-xl-3 col-lg-3 col-md-6 col-sm-6">
 							<div className="footer-widget footer2-col-2 footer-contact-infos">
 								<div className="footer-title">
 									<h4 className="title">Our offices</h4>
 								</div>
 								<div className="infos-item">
-									<span>Headquarters - USA</span>
-									<p>993 Renner Burg, West Rond, MT 94251-030</p>
-									<Link href="tel:1009544-7818">+1 (009) 544-7818</Link>
-								</div>
-								<div className="infos-item">
-									<span>Operations - Canada</span>
-									<p>Suite 452 8082 Boner Parge, Elviraton, CA 48998</p>
+									<span>Headquarters - Australia</span>
+									<p>Level 5, 123 Pitt Street, Sydney NSW 2000</p>
+									<Link href="tel:+61290000000">+61 2 9000 0000</Link>
 								</div>
 							</div>
 						</div>
-						<div className="col-xl-2 col-lg-2 col-md-6 col-sm-6">
+						<div className="col-xl-3 col-lg-3 col-md-6 col-sm-6">
 							<div className="footer-widget footer2-col-3 widget_nav_menu">
 								<div className="footer-title">
-									<h4 className="title">Resourses</h4>
+									<h4 className="title">Resources</h4>
 								</div>
 								<div className="widget-menu">
 									<ul>
 										<li>
-											<Link href="/contact">Contact us</Link>
+											<Link href="/resources/interview-guide">Your Interview Toolkit</Link>
 										</li>
 										<li>
-											<Link href="/contact">Privacy policy</Link>
+											<Link href="/resources/skills-assessment">Skills Assessment Info Sheet</Link>
 										</li>
 										<li>
-											<Link href="/terms-and-conditions">Terms &amp; Conditions</Link>
-										</li>
-										<li>
-											<Link href="about">Recognitions</Link>
-										</li>
-										<li>
-											<Link href="careers">
-												Careers <span>New</span>
-											</Link>
-										</li>
-										<li>
-											<Link href="/blog-grid">Blog</Link>
-										</li>
-										<li>
-											<Link href="/team">Feedback</Link>
-										</li>
-										<li>
-											<Link href="/contact">Error 404</Link>
+											<Link href="/resources/subclass-482-visa">Subclass 482 Visa Info Sheet</Link>
 										</li>
 									</ul>
 								</div>
 							</div>
 						</div>
-						<div className="col-xl-2 col-lg-3 col-md-6 col-sm-6">
+						<div className="col-xl-2 col-lg-2 col-md-6 col-sm-6">
 							<div className="footer-widget footer2-col-4 widget_nav_menu">
 								<div className="footer-title">
-									<h4 className="title">Services</h4>
+									<h4 className="title">Pages</h4>
 								</div>
 								<div className="widget-menu">
 									<ul>
 										<li>
-											<Link href="/services/1">Strategic planning</Link>
+											<Link href="/">Home</Link>
 										</li>
 										<li>
-											<Link href="/services/2">Market research</Link>
+											<Link href="/about-us">About Us</Link>
 										</li>
 										<li>
-											<Link href="/services/3">Business process</Link>
+											<Link href="/employers">Employers</Link>
 										</li>
 										<li>
-											<Link href="/services/4">Financial management</Link>
+											<Link href="/job-seekers">Job Seekers</Link>
 										</li>
 										<li>
-											<Link href="/services/5">Change management</Link>
+											<Link href="/our-sectors">Our Sectors</Link>
 										</li>
 										<li>
-											<Link href="/services/6">IT consulting</Link>
+											<Link href="/resources">Resources</Link>
 										</li>
 										<li>
-											<Link href="/services/1">Leadership </Link>
+											<Link href="/contact">Contact</Link>
 										</li>
 									</ul>
 								</div>
@@ -141,10 +120,10 @@ const Footer2 = () => {
 								<div className="copyright-content-area">
 									<div className="copyright-text">
 										<p>
-											© 2025{" "}
+											© 2026{" "}
 											<Link href="/" target="_blank">
 												{" "}
-												TalentBridge{" "}
+												Skills In Motion{" "}
 											</Link>{" "}
 											All right reserved.
 										</p>
