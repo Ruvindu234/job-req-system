@@ -49,7 +49,7 @@ const Hero2 = () => {
 				onSlideChange={swiper => updateDashWidth(swiper)}
 				className="full-slider-active"
 			>
-				{heroSlides.map(({ img }, idx) => (
+				{heroSlides.map(({ img, title }, idx) => (
 					<SwiperSlide key={idx}>
 						<section
 							className="tj-slider-section"
@@ -75,6 +75,24 @@ const Hero2 = () => {
 										<div className="slider-content">
 										</div>
 									</div>
+								</div>
+							</div>
+							<div className="hero-marquee">
+								<div className="scrolling-ticker-box">
+									{[0, 1].map(copy => (
+										<div
+											className="scrolling-content"
+											key={copy}
+											aria-hidden={copy === 1}
+										>
+											{[0, 1, 2].map(i => (
+												<span key={i}>
+													<i className="tji-star-2"></i>
+													{title}
+												</span>
+											))}
+										</div>
+									))}
 								</div>
 							</div>
 						</section>

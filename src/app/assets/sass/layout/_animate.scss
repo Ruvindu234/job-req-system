@@ -134,6 +134,15 @@
 		transform: translateX(calc(-100% - 40px));
 	}
 }
+@keyframes scroll-reverse {
+	from {
+		transform: translateX(calc(-100% - 40px));
+	}
+
+	to {
+		transform: translateX(0);
+	}
+}
 @keyframes rotateMarquee {
 	0% {
 		transform: rotate(0deg);

@@ -264,4 +264,45 @@
 		transition: width 0.3s ease;
 	}
 }
+.hero-marquee {
+	position: absolute;
+	inset-inline-start: 0;
+	bottom: 20px;
+	width: 100%;
+	z-index: 2;
+	@media #{$md} {
+		bottom: 15px;
+	}
+	@media #{$sm, $xs} {
+		bottom: 10px;
+	}
+	.scrolling-content {
+		animation-name: scroll-reverse;
+		animation-duration: 40s;
+	}
+	.scrolling-content span {
+		color: var(--tj-color-heading-primary);
+		font-size: 48px;
+		@media #{$lg} {
+			font-size: 40px;
+		}
+		@media #{$md} {
+			font-size: 32px;
+		}
+		@media #{$sm, $xs} {
+			font-size: 24px;
+		}
+	}
+	.scrolling-content span i {
+		font-size: 20px;
+		@media #{$sm, $xs} {
+			font-size: 14px;
+		}
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.scrolling-content {
+			animation: none;
+		}
+	}
+}
 /* !END: Slider CSS */
