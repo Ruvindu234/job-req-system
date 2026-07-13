@@ -5,7 +5,7 @@ const Subclass482PageHeader = () => {
 	return (
 		<section
 			className="tj-page-header"
-			style={{ backgroundImage: `url('${assetUrl("/new_images/pheader-bg.webp")}')` }}
+			style={{ backgroundImage: `url('${assetUrl("/new_images/new-hero-image.webp")}')` }}
 		>
 			<div className="container">
 				<div className="row">
