@@ -2,14 +2,14 @@
 
 const Services8 = () => {
 	return (
-		<section className="h8-services-section section-space" style={{ padding: "60px 0" }}>
+		<section className="h8-services-section section-space" style={{ padding: "24px 0 60px" }}>
 			<div className="container">
 				<div className="row">
 					<div className="col">
-						<h2 className="sec-title text-anim mb-40" style={{ color: "var(--tj-color-heading-primary)" }}>
+						<h2 className="sec-title text-anim" style={{ color: "var(--tj-color-heading-primary)", marginTop: 0, marginBottom: "16px", fontSize: "36px", lineHeight: "1.2" }}>
 							Why Choose <span style={{ color: "var(--tj-color-theme-primary)" }}>Skills in Motion</span>
 						</h2>
-						<h4 style={{ color: "var(--tj-color-heading-primary)", marginBottom: "20px" }}>
+						<h4 style={{ color: "var(--tj-color-heading-primary)", marginTop: 0, marginBottom: "20px" }}>
 							One-Stop Solution for Local and Overseas Talent
 						</h4>
 						<div style={{ color: "var(--tj-color-text-1)", fontSize: "16px", lineHeight: "1.8", display: "flex", flexDirection: "column", gap: "16px" }}>
