@@ -42,7 +42,8 @@
       "WebSearch",
       "Bash(find /e/Job-req/job-req-system/src -type f -name *home*)",
       "Bash(git remote *)",
-      "Bash(npx playwright *)"
+      "Bash(npx playwright *)",
+      "Bash(python -c ' *)"
     ]
   }
 }
